@@ -13,9 +13,15 @@ final class MapViewController: UIViewController {
     }
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         self.view.addSubview(self.mapView)
         self.mapView.fillConstraintsToSuperview()
+        self.mapView.isZoomEnabled = true
+        self.mapView.isPitchEnabled = true
+        self.mapView.showsUserLocation = true
     }
     
+    func update(with region: MKCoordinateRegion) {
+        self.mapView.setRegion(region, animated: true)
+    }
 }

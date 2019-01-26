@@ -32,12 +32,12 @@ extension UIView {
         guard let superview = self.superview else { return }
         
         self.translatesAutoresizingMaskIntoConstraints = false
-
-            NSLayoutConstraint.activate([
-                self.centerXAnchor.constraint(equalTo: superview.centerXAnchor),
-                self.bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: 0),
-                self.widthAnchor.constraint(equalTo: superview.widthAnchor, multiplier: multiplier),
-                self.topAnchor.constraint(equalTo: superview.topAnchor, constant: -8)
-                ])
+        
+        NSLayoutConstraint.activate([
+            self.centerXAnchor.constraint(equalTo: superview.centerXAnchor),
+            self.bottomAnchor.constraint(equalTo: superview.bottomAnchor, constant: 0),
+            self.widthAnchor.constraint(equalTo: superview.widthAnchor, multiplier: multiplier),
+            self.topAnchor.constraint(equalTo: superview.topAnchor, constant: -8)
+            ])
     }
 }
