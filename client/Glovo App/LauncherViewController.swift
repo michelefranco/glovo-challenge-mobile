@@ -1,6 +1,8 @@
 import UIKit
 
 final class LauncherViewController: UIViewController {
+    private let containerView = UIView()
+    private let mapViewController = MapViewController()
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -12,8 +14,12 @@ final class LauncherViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        self.view.backgroundColor = .yellow
+        self.view.addSubview(self.containerView)
+        self.containerView.fillConstraintsToSuperview()
+        self.addChild(self.mapViewController, in: self.containerView)
     }
     
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .default
+    }
 }
