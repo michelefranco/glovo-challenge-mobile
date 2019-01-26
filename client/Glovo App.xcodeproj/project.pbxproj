@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		B458A31121FCCDD700C5990B /* LauncherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B458A31021FCCDD700C5990B /* LauncherViewController.swift */; };
+		B458A31421FCD17000C5990B /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B458A31321FCD17000C5990B /* MapViewController.swift */; };
+		B458A31621FCD19100C5990B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B458A31521FCD19100C5990B /* Extensions.swift */; };
 		B463ADD621FCCC5E00F072BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B463ADD521FCCC5E00F072BB /* AppDelegate.swift */; };
 		B463ADDD21FCCC6100F072BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B463ADDC21FCCC6100F072BB /* Assets.xcassets */; };
 		B463ADE021FCCC6100F072BB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B463ADDE21FCCC6100F072BB /* LaunchScreen.storyboard */; };
@@ -15,6 +17,8 @@
 
 /* Begin PBXFileReference section */
 		B458A31021FCCDD700C5990B /* LauncherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LauncherViewController.swift; sourceTree = "<group>"; };
+		B458A31321FCD17000C5990B /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		B458A31521FCD19100C5990B /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		B463ADD221FCCC5E00F072BB /* Glovo App.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Glovo App.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B463ADD521FCCC5E00F072BB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B463ADDC21FCCC6100F072BB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -33,6 +37,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B458A31221FCD15700C5990B /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				B458A31321FCD17000C5990B /* MapViewController.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
 		B463ADC921FCCC5E00F072BB = {
 			isa = PBXGroup;
 			children = (
@@ -52,11 +64,13 @@
 		B463ADD421FCCC5E00F072BB /* Glovo App */ = {
 			isa = PBXGroup;
 			children = (
+				B463ADE121FCCC6100F072BB /* Info.plist */,
 				B463ADD521FCCC5E00F072BB /* AppDelegate.swift */,
+				B458A31521FCD19100C5990B /* Extensions.swift */,
 				B458A31021FCCDD700C5990B /* LauncherViewController.swift */,
 				B463ADDC21FCCC6100F072BB /* Assets.xcassets */,
 				B463ADDE21FCCC6100F072BB /* LaunchScreen.storyboard */,
-				B463ADE121FCCC6100F072BB /* Info.plist */,
+				B458A31221FCD15700C5990B /* Map */,
 			);
 			path = "Glovo App";
 			sourceTree = "<group>";
@@ -132,7 +146,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				B458A31121FCCDD700C5990B /* LauncherViewController.swift in Sources */,
+				B458A31421FCD17000C5990B /* MapViewController.swift in Sources */,
 				B463ADD621FCCC5E00F072BB /* AppDelegate.swift in Sources */,
+				B458A31621FCD19100C5990B /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -271,7 +287,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = T24S44J7TL;
 				INFOPLIST_FILE = "Glovo App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -289,7 +305,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = T24S44J7TL;
 				INFOPLIST_FILE = "Glovo App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
