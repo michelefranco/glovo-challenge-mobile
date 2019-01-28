@@ -19,6 +19,7 @@ final class LauncherViewController: UIViewController, CLLocationManagerDelegate 
         fatalError("init(coder:) has not been implemented")
     }
     
+    //MARK: UIViewController's life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,30 +29,6 @@ final class LauncherViewController: UIViewController, CLLocationManagerDelegate 
         
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
         self.enableLocationServices()
-    }
-    
-    private func enableLocationServices() {
-        self.locationManager.delegate = self
-        
-        switch CLLocationManager.authorizationStatus() {
-        case .notDetermined:
-            // Request when-in-use authorization initially
-            self.locationManager.requestWhenInUseAuthorization()
-            break
-            
-        case .restricted, .denied:
-            // Disable location features
-            self.disableMyLocationBasedFeatures()
-            
-        case .authorizedWhenInUse:
-            // Enable basic location features
-            self.escalateLocationServiceAuthorization()
-            self.enableMyWhenInUseFeatures()
-        case .authorizedAlways:
-            // Enable any of your app's location features
-            self.enableMyAlwaysFeatures()
-            break
-        }
     }
     
     //MARK: CLLocationManagerDelegate methods
@@ -95,6 +72,30 @@ final class LauncherViewController: UIViewController, CLLocationManagerDelegate 
     
     
     // MARK: private function for supporting the Location
+    private func enableLocationServices() {
+        self.locationManager.delegate = self
+        
+        switch CLLocationManager.authorizationStatus() {
+        case .notDetermined:
+            // Request when-in-use authorization initially
+            self.locationManager.requestWhenInUseAuthorization()
+            break
+            
+        case .restricted, .denied:
+            // Disable location features
+            self.disableMyLocationBasedFeatures()
+            
+        case .authorizedWhenInUse:
+            // Enable basic location features
+            self.escalateLocationServiceAuthorization()
+            self.enableMyWhenInUseFeatures()
+        case .authorizedAlways:
+            // Enable any of your app's location features
+            self.enableMyAlwaysFeatures()
+            break
+        }
+    }
+    
     private func disableMyLocationBasedFeatures() {}
     
     private func enableMyWhenInUseFeatures() {

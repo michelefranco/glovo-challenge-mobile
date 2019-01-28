@@ -7,17 +7,35 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B4552AF021FF04E600CA18AE /* firTest.json in Resources */ = {isa = PBXBuildFile; fileRef = B4552AEF21FF04E600CA18AE /* firTest.json */; };
+		B4552AF221FF328500CA18AE /* countriesTest.json in Resources */ = {isa = PBXBuildFile; fileRef = B4552AF121FF328200CA18AE /* countriesTest.json */; };
 		B458A31121FCCDD700C5990B /* LauncherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B458A31021FCCDD700C5990B /* LauncherViewController.swift */; };
 		B458A31421FCD17000C5990B /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B458A31321FCD17000C5990B /* MapViewController.swift */; };
 		B458A31621FCD19100C5990B /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = B458A31521FCD19100C5990B /* Extensions.swift */; };
 		B463ADD621FCCC5E00F072BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B463ADD521FCCC5E00F072BB /* AppDelegate.swift */; };
 		B463ADDD21FCCC6100F072BB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B463ADDC21FCCC6100F072BB /* Assets.xcassets */; };
 		B463ADE021FCCC6100F072BB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B463ADDE21FCCC6100F072BB /* LaunchScreen.storyboard */; };
+		B46FE80521FE126D0039729D /* APIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46FE80421FE126D0039729D /* APIResponse.swift */; };
+		B483478F21FE2B1A00F9060F /* GlovoAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B483478E21FE2B1A00F9060F /* GlovoAPITest.swift */; };
+		B499564521FDFBEB000C8A3D /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = B499564421FDFBEB000C8A3D /* Router.swift */; };
 		B4B4FA2421FCFD90005CD17B /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B4FA2321FCFD90005CD17B /* Model.swift */; };
 		B4C2B30021FCF88E00866E86 /* ModelJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C2B2FF21FCF88E00866E86 /* ModelJSON.swift */; };
+		B4DF2F9521FE356100FAC719 /* citiesTest.json in Resources */ = {isa = PBXBuildFile; fileRef = B4DF2F9421FE356100FAC719 /* citiesTest.json */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		B483479121FE2B1A00F9060F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B463ADCA21FCCC5E00F072BB /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B463ADD121FCCC5E00F072BB;
+			remoteInfo = "Glovo App";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
+		B4552AEF21FF04E600CA18AE /* firTest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = firTest.json; sourceTree = "<group>"; };
+		B4552AF121FF328200CA18AE /* countriesTest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = countriesTest.json; sourceTree = "<group>"; };
 		B458A31021FCCDD700C5990B /* LauncherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LauncherViewController.swift; sourceTree = "<group>"; };
 		B458A31321FCD17000C5990B /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		B458A31521FCD19100C5990B /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -26,12 +44,25 @@
 		B463ADDC21FCCC6100F072BB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B463ADDF21FCCC6100F072BB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B463ADE121FCCC6100F072BB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B46FE80421FE126D0039729D /* APIResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIResponse.swift; sourceTree = "<group>"; };
+		B483478C21FE2B1A00F9060F /* Glovo AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Glovo AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		B483478E21FE2B1A00F9060F /* GlovoAPITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlovoAPITest.swift; sourceTree = "<group>"; };
+		B483479021FE2B1A00F9060F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B499564421FDFBEB000C8A3D /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		B4B4FA2321FCFD90005CD17B /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		B4C2B2FF21FCF88E00866E86 /* ModelJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelJSON.swift; sourceTree = "<group>"; };
+		B4DF2F9421FE356100FAC719 /* citiesTest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = citiesTest.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		B463ADCF21FCCC5E00F072BB /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B483478921FE2B1A00F9060F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -53,6 +84,7 @@
 			isa = PBXGroup;
 			children = (
 				B463ADD421FCCC5E00F072BB /* Glovo App */,
+				B483478D21FE2B1A00F9060F /* Glovo AppTests */,
 				B463ADD321FCCC5E00F072BB /* Products */,
 			);
 			sourceTree = "<group>";
@@ -61,6 +93,7 @@
 			isa = PBXGroup;
 			children = (
 				B463ADD221FCCC5E00F072BB /* Glovo App.app */,
+				B483478C21FE2B1A00F9060F /* Glovo AppTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -80,11 +113,25 @@
 			path = "Glovo App";
 			sourceTree = "<group>";
 		};
+		B483478D21FE2B1A00F9060F /* Glovo AppTests */ = {
+			isa = PBXGroup;
+			children = (
+				B483478E21FE2B1A00F9060F /* GlovoAPITest.swift */,
+				B483479021FE2B1A00F9060F /* Info.plist */,
+				B4DF2F9421FE356100FAC719 /* citiesTest.json */,
+				B4552AF121FF328200CA18AE /* countriesTest.json */,
+				B4552AEF21FF04E600CA18AE /* firTest.json */,
+			);
+			path = "Glovo AppTests";
+			sourceTree = "<group>";
+		};
 		B4C2B2FE21FCF87300866E86 /* API */ = {
 			isa = PBXGroup;
 			children = (
+				B499564421FDFBEB000C8A3D /* Router.swift */,
 				B4B4FA2321FCFD90005CD17B /* Model.swift */,
 				B4C2B2FF21FCF88E00866E86 /* ModelJSON.swift */,
+				B46FE80421FE126D0039729D /* APIResponse.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -109,6 +156,24 @@
 			productReference = B463ADD221FCCC5E00F072BB /* Glovo App.app */;
 			productType = "com.apple.product-type.application";
 		};
+		B483478B21FE2B1A00F9060F /* Glovo AppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B483479321FE2B1A00F9060F /* Build configuration list for PBXNativeTarget "Glovo AppTests" */;
+			buildPhases = (
+				B483478821FE2B1A00F9060F /* Sources */,
+				B483478921FE2B1A00F9060F /* Frameworks */,
+				B483478A21FE2B1A00F9060F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B483479221FE2B1A00F9060F /* PBXTargetDependency */,
+			);
+			name = "Glovo AppTests";
+			productName = "Glovo AppTests";
+			productReference = B483478C21FE2B1A00F9060F /* Glovo AppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -121,6 +186,10 @@
 				TargetAttributes = {
 					B463ADD121FCCC5E00F072BB = {
 						CreatedOnToolsVersion = 10.1;
+					};
+					B483478B21FE2B1A00F9060F = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = B463ADD121FCCC5E00F072BB;
 					};
 				};
 			};
@@ -138,6 +207,7 @@
 			projectRoot = "";
 			targets = (
 				B463ADD121FCCC5E00F072BB /* Glovo App */,
+				B483478B21FE2B1A00F9060F /* Glovo AppTests */,
 			);
 		};
 /* End PBXProject section */
@@ -152,6 +222,16 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B483478A21FE2B1A00F9060F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B4552AF221FF328500CA18AE /* countriesTest.json in Resources */,
+				B4DF2F9521FE356100FAC719 /* citiesTest.json in Resources */,
+				B4552AF021FF04E600CA18AE /* firTest.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -162,13 +242,31 @@
 				B4C2B30021FCF88E00866E86 /* ModelJSON.swift in Sources */,
 				B458A31121FCCDD700C5990B /* LauncherViewController.swift in Sources */,
 				B458A31421FCD17000C5990B /* MapViewController.swift in Sources */,
+				B499564521FDFBEB000C8A3D /* Router.swift in Sources */,
 				B4B4FA2421FCFD90005CD17B /* Model.swift in Sources */,
+				B46FE80521FE126D0039729D /* APIResponse.swift in Sources */,
 				B463ADD621FCCC5E00F072BB /* AppDelegate.swift in Sources */,
 				B458A31621FCD19100C5990B /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		B483478821FE2B1A00F9060F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B483478F21FE2B1A00F9060F /* GlovoAPITest.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B483479221FE2B1A00F9060F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B463ADD121FCCC5E00F072BB /* Glovo App */;
+			targetProxy = B483479121FE2B1A00F9060F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		B463ADDE21FCCC6100F072BB /* LaunchScreen.storyboard */ = {
@@ -334,6 +432,46 @@
 			};
 			name = Release;
 		};
+		B483479421FE2B1A00F9060F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Glovo AppTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.test.Glovo-AppTests";
+				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Glovo App.app/Glovo App";
+			};
+			name = Debug;
+		};
+		B483479521FE2B1A00F9060F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "Glovo AppTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.test.Glovo-AppTests";
+				PRODUCT_MODULE_NAME = "$(PRODUCT_NAME:c99extidentifier)";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Glovo App.app/Glovo App";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -351,6 +489,15 @@
 			buildConfigurations = (
 				B463ADE521FCCC6100F072BB /* Debug */,
 				B463ADE621FCCC6100F072BB /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B483479321FE2B1A00F9060F /* Build configuration list for PBXNativeTarget "Glovo AppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B483479421FE2B1A00F9060F /* Debug */,
+				B483479521FE2B1A00F9060F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
