@@ -41,3 +41,20 @@ extension UIView {
             ])
     }
 }
+
+extension String {
+    var unescaped: String {
+        let entities = ["\0": "\\0",
+                        "\t": "\\t",
+                        "\n": "\\n",
+                        "\r": "\\r",
+                        "\"": "\\\"",
+                        "\'": "\\'",
+                        ]
+        
+        return entities
+            .reduce(self) { (string, entity) in
+                string.replacingOccurrences(of: entity.value, with: entity.key)
+        }
+    }
+}
