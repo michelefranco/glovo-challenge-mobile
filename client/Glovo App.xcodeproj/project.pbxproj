@@ -21,6 +21,7 @@
 		B4B4FA2421FCFD90005CD17B /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B4FA2321FCFD90005CD17B /* Model.swift */; };
 		B4C2B30021FCF88E00866E86 /* ModelJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C2B2FF21FCF88E00866E86 /* ModelJSON.swift */; };
 		B4DF2F9521FE356100FAC719 /* citiesTest.json in Resources */ = {isa = PBXBuildFile; fileRef = B4DF2F9421FE356100FAC719 /* citiesTest.json */; };
+		B4FB6CE42200F6270013AEA2 /* Polyline.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FB6CE32200F6270013AEA2 /* Polyline.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		B4B4FA2321FCFD90005CD17B /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		B4C2B2FF21FCF88E00866E86 /* ModelJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelJSON.swift; sourceTree = "<group>"; };
 		B4DF2F9421FE356100FAC719 /* citiesTest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = citiesTest.json; sourceTree = "<group>"; };
+		B4FB6CE32200F6270013AEA2 /* Polyline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Polyline.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 		B463ADD421FCCC5E00F072BB /* Glovo App */ = {
 			isa = PBXGroup;
 			children = (
+				B4FB6CE32200F6270013AEA2 /* Polyline.swift */,
 				B463ADE121FCCC6100F072BB /* Info.plist */,
 				B463ADD521FCCC5E00F072BB /* AppDelegate.swift */,
 				B458A31521FCD19100C5990B /* Extensions.swift */,
@@ -239,6 +242,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B4FB6CE42200F6270013AEA2 /* Polyline.swift in Sources */,
 				B4C2B30021FCF88E00866E86 /* ModelJSON.swift in Sources */,
 				B458A31121FCCDD700C5990B /* LauncherViewController.swift in Sources */,
 				B458A31421FCD17000C5990B /* MapViewController.swift in Sources */,

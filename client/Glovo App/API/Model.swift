@@ -29,7 +29,7 @@ public class City {
         self.name = name
         self.code = code
         self.countryCode = countryCode
-        self.workingArea = workingArea
+        self.workingArea = workingArea.filter { !$0.isEmpty }
     }
     
     convenience init(from json: CityJSON) {
