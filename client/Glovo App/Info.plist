@@ -7,6 +7,8 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>The application can use your location to detect working area in your city</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>The application can use your location to detect working area in your city</string>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
