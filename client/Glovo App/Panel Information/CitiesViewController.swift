@@ -9,9 +9,14 @@ final class CitiesViewController: UIViewController {
     
     private let containerView = UIView()
     private let citiesViewController = CitiesTableViewController()
+    weak var citiesDelegate: CityTableViewDelegate?
     
     var countriesCount: Int {
         return self.citiesViewController.countries.count
+    }
+    
+    func scrollToTop() {
+        self.citiesViewController.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
     }
     
     init() {
@@ -43,6 +48,7 @@ final class CitiesViewController: UIViewController {
             ])
         
         self.addChild(citiesViewController, in: self.containerView)
+        self.citiesViewController.delegate = self.citiesDelegate
     }
     
     override func viewDidLayoutSubviews() {
@@ -50,7 +56,7 @@ final class CitiesViewController: UIViewController {
         self.visualEffectView.layer.cornerRadius = 9.0
         self.visualEffectView.clipsToBounds = true
     }
-    
+
     func locationIsInRange(countryName: String, cityName: String) -> City? {
        return self.citiesViewController.locationIsInRange(countryName: countryName, cityName: cityName)
     }

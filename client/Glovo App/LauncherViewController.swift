@@ -3,13 +3,16 @@ import MapKit
 import CoreLocation
 import FloatingPanel
 
-final class LauncherViewController: UIViewController, CLLocationManagerDelegate, FloatingPanelControllerDelegate {
+final class LauncherViewController: UIViewController, CLLocationManagerDelegate, FloatingPanelControllerDelegate, CityTableViewDelegate {
     private let containerView = UIView()
     private let mapViewController = MapViewController()
     private let citiesViewController = CitiesViewController()
     private let locationManager = CLLocationManager()
+    private let logoButton = UIButton()
     private var fpc: FloatingPanelController!
-    
+    private var layoutIsSet = false
+        private var logoActivatedRightAnchor: NSLayoutConstraint!
+    private var logoDeactivatedRightAnchor: NSLayoutConstraint!
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .default
     }
@@ -33,6 +36,30 @@ final class LauncherViewController: UIViewController, CLLocationManagerDelegate,
         
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
         self.enableLocationServices()
+        self.citiesViewController.citiesDelegate = self
+        
+        self.setButtonLogo()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        guard !self.layoutIsSet else {
+            return
+        }
+        
+        self.layoutIsSet = true
+        self.setLayoutForLogo()
+        self.view.layoutIfNeeded()
+    }
+    
+    //MARK: CityTableViewDelegate Methods
+    func didSelect(city: City) {
+        self.mapViewController.setVisibleMapArea(with: city)
+        self.fpc.move(to: .hidden, animated: true) {
+            self.fpc.removePanelFromParent(animated: true) {
+                self.showLogoButton()
+            }
+        }
     }
     
     //MARK: CLLocationManagerDelegate methods
@@ -82,6 +109,68 @@ final class LauncherViewController: UIViewController, CLLocationManagerDelegate,
     }
     
     //MARK: private methods
+    private func setLayoutForLogo() {
+        
+        let proportionalTopAnchor = self.view.bounds.height * 0.07
+        NSLayoutConstraint.activate([self.view.topAnchor.constraint(equalTo: self.logoButton.topAnchor, constant: -proportionalTopAnchor)])
+        self.logoButton.layer.borderColor = UIColor(hex: 0xFEDA54).cgColor
+        self.logoButton.layer.borderWidth = 3.0
+        self.logoButton.layer.cornerRadius = self.logoButton.bounds.midX
+        self.logoButton.layer.masksToBounds = true
+    }
+    
+    @objc func logoButtonTouched(_ button: UIButton) {
+        if self.fpc.position == .hidden {
+            self.citiesViewController.scrollToTop()
+            self.fpc.addPanel(toParent: self)
+            self.hideLogoButton() {
+                self.fpc.move(to: .half, animated: true)
+            }
+        }
+    }
+    
+    private func setButtonLogo() {
+        guard let image = UIImage(named: "logo") else { return }
+        self.logoButton.setBackgroundImage(image, for: .normal)
+        
+        self.logoButton.addTarget(self, action: #selector(self.logoButtonTouched(_:)), for: .touchUpInside)
+        self.view.addSubview(self.logoButton)
+        self.logoButton.translatesAutoresizingMaskIntoConstraints = false
+        self.logoActivatedRightAnchor = self.logoButton.rightAnchor.constraint(equalTo: self.view.rightAnchor, constant: -8.0)
+        self.logoDeactivatedRightAnchor = self.logoButton.leftAnchor.constraint(equalTo: self.view.rightAnchor, constant: 8.0)
+        
+        NSLayoutConstraint.activate( [
+            self.logoDeactivatedRightAnchor,
+            self.logoButton.widthAnchor.constraint(equalTo: self.view.widthAnchor, multiplier: 0.18),
+            self.logoButton.heightAnchor.constraint(equalTo: self.logoButton.widthAnchor)
+            ])
+    }
+    
+    private func showLogoButton(completion: (() -> ())? = nil) {
+        self.logoDeactivatedRightAnchor.isActive = false
+        self.logoActivatedRightAnchor.isActive = true
+        self.view.setNeedsLayout()
+        
+        UIView.animate(withDuration: 0.3, animations: {
+            self.view.layoutIfNeeded()
+        }) { _ in
+            completion?()
+        }
+    }
+    
+    private func hideLogoButton(completion: (() -> ())? = nil) {
+        self.logoActivatedRightAnchor.isActive = false
+        self.logoDeactivatedRightAnchor.isActive = true
+
+        self.view.setNeedsLayout()
+        
+        UIView.animate(withDuration: 0.3, animations: {
+            self.view.layoutIfNeeded()
+        }) { _ in
+            completion?()
+        }
+    }
+    
     private func setModel() {
         let group = DispatchGroup()
         
@@ -130,10 +219,11 @@ final class LauncherViewController: UIViewController, CLLocationManagerDelegate,
             
             let city = self.citiesViewController.locationIsInRange(countryName: countryName, cityName: cityName)
             
-            if let city = city {
-                // call the map
+            if let city = city, self.mapViewController.contains(location, in: city) {
+                self.mapViewController.setVisibleMapArea(with: city)
+                self.showLogoButton()
             } else {
-                // no in the area
+                self.fpc.move(to: .half, animated: true)
             }
         }
     }
@@ -153,17 +243,20 @@ final class LauncherViewController: UIViewController, CLLocationManagerDelegate,
     }
     
     // MARK: FloatingPanelControllerDelegate
+    func floatingPanelDidEndDragging(_ vc: FloatingPanelController, withVelocity velocity: CGPoint, targetPosition: FloatingPanelPosition) {
+        if targetPosition == .tip {
+            vc.move(to: .hidden, animated: true) {
+                vc.removePanelFromParent(animated: true) {
+                    self.showLogoButton()
+                }
+            }
+        }
+    }
+    
     func floatingPanel(_ vc: FloatingPanelController, layoutFor newCollection: UITraitCollection) -> FloatingPanelLayout? {
-        switch newCollection.verticalSizeClass {
-        case .compact:
             fpc.surfaceView.borderWidth = 1.0 / traitCollection.displayScale
             fpc.surfaceView.borderColor = UIColor.black.withAlphaComponent(0.2)
-            return PanelLandscapeLayout()
-        default:
-            fpc.surfaceView.borderWidth = 0.0
-            fpc.surfaceView.borderColor = nil
-            return nil
-        }
+            return PanelCompactLayout()
     }
     
     // MARK: private methods for supporting the Location
@@ -209,17 +302,16 @@ final class LauncherViewController: UIViewController, CLLocationManagerDelegate,
     }
 }
 
-
-public class PanelLandscapeLayout: FloatingPanelLayout {
+public class PanelCompactLayout: FloatingPanelLayout {
     public var initialPosition: FloatingPanelPosition {
-        return .tip
-    }
-    
-    public var supportedPositions: Set<FloatingPanelPosition> {
-        return [.full, .tip]
+        return .hidden
     }
     
     public func insetFor(position: FloatingPanelPosition) -> CGFloat? {
-        return nil
+        switch position {
+        case .full: return 16.0 // A top inset from safe area
+        case .half: return 216.0 // A bottom inset from the safe area
+        default: return 0 // Or `case .hidden: return nil`
+        }
     }
 }

@@ -1,4 +1,5 @@
 import UIKit
+import MapKit
 
 extension UIViewController {
     func addChild(_ controller: UIViewController, in containerView: UIView) {
@@ -42,6 +43,27 @@ extension UIView {
     }
 }
 
+extension UIColor {
+    convenience init(hex: Int, alpha: CGFloat = 1) {
+        self.init(
+            red: CGFloat(UInt8(hex >> 16 & 0xFF)) / 255,
+            green: CGFloat(UInt8(hex >> 8 & 0xFF)) / 255,
+            blue: CGFloat(UInt8(hex & 0xff)) / 255,
+            alpha: alpha
+        )
+    }
+    
+    func getRGBA() -> (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) {
+        var r: CGFloat = 0
+        var g: CGFloat = 0
+        var b: CGFloat = 0
+        var a: CGFloat = 0
+        self.getRed(&r, green: &g, blue: &b, alpha: &a)
+        return (r, g, b, a)
+    }
+}
+
+
 extension String {
     var unescaped: String {
         let entities = ["\0": "\\0",
@@ -56,5 +78,20 @@ extension String {
             .reduce(self) { (string, entity) in
                 string.replacingOccurrences(of: entity.value, with: entity.key)
         }
+    }
+}
+
+extension MKPolygon {
+    
+    var points: [MKMapPoint] {
+        let polygonPoints = self.points()
+        
+        var result = [MKMapPoint]()
+        for index in 0..<self.pointCount {
+            let point = polygonPoints[index]
+            result.append(point)
+        }
+        
+        return result
     }
 }

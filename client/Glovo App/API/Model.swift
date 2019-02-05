@@ -14,7 +14,7 @@ public class Country {
     }
 }
 
-public class City {
+public class City: Hashable {
     public let code: String
     public let name: String
     public let countryCode: String
@@ -24,6 +24,10 @@ public class City {
     public private(set) var currency: String?
     public private(set) var busy: Bool?
     public private(set) var enabled: Bool?
+    
+    public var hashValue: Int {
+         return self.countryCode.hashValue + self.code.hashValue
+    }
     
     public init(code: String, name: String, countryCode: String, workingArea: [String]) {
         self.name = name
@@ -50,5 +54,9 @@ public class City {
         self.currency = json.currency
         self.timeZone = json.timeZone
         self.languageCode = json.languageCode
+    }
+    
+    public static func ==(lhs: City, rhs: City) -> Bool {
+        return (lhs.countryCode == rhs.countryCode) && (lhs.code == rhs.code)
     }
 }

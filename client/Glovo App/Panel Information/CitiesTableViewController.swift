@@ -1,5 +1,9 @@
 import UIKit
 
+public protocol CityTableViewDelegate: class {
+    func didSelect(city: City)
+}
+
 final class CitiesTableViewController: UITableViewController {
     private let reuseIdentifier = "CitiesViewControllerIdentifier"
     private var flagByCountry = ["AR": "🇦🇷", "BR": "🇧🇷", "PA": "🇵🇦", "CL": "🇨🇱", "PE": "🇵🇪",
@@ -7,6 +11,8 @@ final class CitiesTableViewController: UITableViewController {
     
     public private(set) var countries = [Country]()
     private var model = [String: [City]]()
+    weak var delegate: CityTableViewDelegate?
+
     init() {
         super.init(style: .grouped)
     }
@@ -97,7 +103,6 @@ final class CitiesTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: self.reuseIdentifier, for: indexPath)
-        
         cell.backgroundColor = .clear
         let code = self.countries[indexPath.section].code
         
@@ -108,5 +113,16 @@ final class CitiesTableViewController: UITableViewController {
         cell.textLabel?.text = cities[indexPath.item].name
         cell.textLabel?.font = cell.textLabel?.font.withSize(self.tableView.rowHeight * 0.7)
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let code = self.countries[indexPath.section].code
+        guard let cities = self.model[code] else {
+            return
+        }
+        
+        let city = cities[indexPath.item]
+        tableView.deselectRow(at: indexPath, animated: true)
+        self.delegate?.didSelect(city: city)
     }
 }

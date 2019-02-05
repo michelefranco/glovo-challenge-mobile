@@ -41,6 +41,7 @@
 /* Begin PBXFileReference section */
 		B4109EB622099B22006CC52C /* CitiesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesTableViewController.swift; sourceTree = "<group>"; };
 		B4109EB822099D14006CC52C /* LocationServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationServices.swift; sourceTree = "<group>"; };
+		B4109EBA2209CE04006CC52C /* bariLocation.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = bariLocation.gpx; path = ../../../../Desktop/bariLocation.gpx; sourceTree = "<group>"; };
 		B4552AEF21FF04E600CA18AE /* firTest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = firTest.json; sourceTree = "<group>"; };
 		B4552AF121FF328200CA18AE /* countriesTest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = countriesTest.json; sourceTree = "<group>"; };
 		B458A31021FCCDD700C5990B /* LauncherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LauncherViewController.swift; sourceTree = "<group>"; };
@@ -94,6 +95,7 @@
 		B463ADC921FCCC5E00F072BB = {
 			isa = PBXGroup;
 			children = (
+				B4109EBA2209CE04006CC52C /* bariLocation.gpx */,
 				B463ADD421FCCC5E00F072BB /* Glovo App */,
 				B483478D21FE2B1A00F9060F /* Glovo AppTests */,
 				B463ADD321FCCC5E00F072BB /* Products */,
@@ -113,17 +115,17 @@
 		B463ADD421FCCC5E00F072BB /* Glovo App */ = {
 			isa = PBXGroup;
 			children = (
-				B4FB6CED220100590013AEA2 /* Panel Information */,
-				B4FB6CE32200F6270013AEA2 /* Polyline.swift */,
 				B463ADE121FCCC6100F072BB /* Info.plist */,
 				B463ADD521FCCC5E00F072BB /* AppDelegate.swift */,
 				B458A31521FCD19100C5990B /* Extensions.swift */,
 				B458A31021FCCDD700C5990B /* LauncherViewController.swift */,
+				B4109EB822099D14006CC52C /* LocationServices.swift */,
+				B4FB6CE32200F6270013AEA2 /* Polyline.swift */,
 				B463ADDC21FCCC6100F072BB /* Assets.xcassets */,
 				B4C2B2FE21FCF87300866E86 /* API */,
 				B463ADDE21FCCC6100F072BB /* LaunchScreen.storyboard */,
 				B458A31221FCD15700C5990B /* Map */,
-				B4109EB822099D14006CC52C /* LocationServices.swift */,
+				B4FB6CED220100590013AEA2 /* Panel Information */,
 			);
 			path = "Glovo App";
 			sourceTree = "<group>";
