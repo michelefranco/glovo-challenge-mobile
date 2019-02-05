@@ -26,15 +26,14 @@ final class LauncherViewController: UIViewController, CLLocationManagerDelegate,
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.setModel()
         self.view.addSubview(self.containerView)
         self.containerView.fillConstraintsToSuperview()
         self.addChild(self.mapViewController, in: self.containerView)
         
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
         self.enableLocationServices()
-        self.setModel()
     }
-    
     
     //MARK: CLLocationManagerDelegate methods
     
@@ -64,6 +63,13 @@ final class LauncherViewController: UIViewController, CLLocationManagerDelegate,
             else {
                 print("LauncherViewController - There is no location in didUpdateLocations")
                 return
+        }
+        
+        LocationServices.shared.location = location
+        if self.citiesViewController.countriesCount > 0 {
+            DispatchQueue.main.async {
+                self.setInterface(for: location)
+            }
         }
         
         let centerCoordinate = CLLocationCoordinate2D(latitude: location.coordinate.latitude,
@@ -107,9 +113,30 @@ final class LauncherViewController: UIViewController, CLLocationManagerDelegate,
         group.notify(queue: .main) {
             self.citiesViewController.reloadData(with: countries, and: cities)
             self.setInterface(with: countries, and: cities)
+            
+            if let location = LocationServices.shared.location {
+               self.setInterface(for: location)
+            }
         }
     }
     
+    private func setInterface(for location: CLLocation) {
+        LocationServices.shared.getAdress(from: location) { address, error in
+            guard let address = address,
+                let countryName = address["Country"] as? String,
+                let cityName = address["City"] as? String else {
+                return
+            }
+            
+            let city = self.citiesViewController.locationIsInRange(countryName: countryName, cityName: cityName)
+            
+            if let city = city {
+                // call the map
+            } else {
+                // no in the area
+            }
+        }
+    }
     
     private func setInterface(with countries: [Country], and cities: [City]) {
         self.citiesViewController.reloadData(with: countries, and: cities)

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B4109EB722099B22006CC52C /* CitiesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4109EB622099B22006CC52C /* CitiesTableViewController.swift */; };
+		B4109EB922099D14006CC52C /* LocationServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4109EB822099D14006CC52C /* LocationServices.swift */; };
 		B4552AF021FF04E600CA18AE /* firTest.json in Resources */ = {isa = PBXBuildFile; fileRef = B4552AEF21FF04E600CA18AE /* firTest.json */; };
 		B4552AF221FF328500CA18AE /* countriesTest.json in Resources */ = {isa = PBXBuildFile; fileRef = B4552AF121FF328200CA18AE /* countriesTest.json */; };
 		B458A31121FCCDD700C5990B /* LauncherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B458A31021FCCDD700C5990B /* LauncherViewController.swift */; };
@@ -39,6 +40,7 @@
 
 /* Begin PBXFileReference section */
 		B4109EB622099B22006CC52C /* CitiesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesTableViewController.swift; sourceTree = "<group>"; };
+		B4109EB822099D14006CC52C /* LocationServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationServices.swift; sourceTree = "<group>"; };
 		B4552AEF21FF04E600CA18AE /* firTest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = firTest.json; sourceTree = "<group>"; };
 		B4552AF121FF328200CA18AE /* countriesTest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = countriesTest.json; sourceTree = "<group>"; };
 		B458A31021FCCDD700C5990B /* LauncherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LauncherViewController.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 				B4C2B2FE21FCF87300866E86 /* API */,
 				B463ADDE21FCCC6100F072BB /* LaunchScreen.storyboard */,
 				B458A31221FCD15700C5990B /* Map */,
+				B4109EB822099D14006CC52C /* LocationServices.swift */,
 			);
 			path = "Glovo App";
 			sourceTree = "<group>";
@@ -302,6 +305,7 @@
 				B46FE80521FE126D0039729D /* APIResponse.swift in Sources */,
 				B463ADD621FCCC5E00F072BB /* AppDelegate.swift in Sources */,
 				B4109EB722099B22006CC52C /* CitiesTableViewController.swift in Sources */,
+				B4109EB922099D14006CC52C /* LocationServices.swift in Sources */,
 				B458A31621FCD19100C5990B /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
