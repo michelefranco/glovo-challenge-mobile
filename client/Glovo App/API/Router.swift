@@ -45,7 +45,9 @@ final public class Router {
             do {
                 let countriesJSON = try JSONDecoder().decode([CountryJSON].self, from: data)
                 let countries = countriesJSON.map { Country(from: $0) }
-                completion(APIResponse.success(result: countries))
+                DispatchQueue.main.async {
+                    completion(APIResponse.success(result: countries))
+                }
             } catch {
                 let err = APIError.decodingJSON(message: "\(errorLocation) error during decoding countries : \(error.localizedDescription)")
                 DispatchQueue.main.async {
@@ -93,7 +95,9 @@ final public class Router {
             do {
                 let cityDetailJSON = try JSONDecoder().decode(CityDetailJSON.self, from: data)
                 let cities = City(from: cityDetailJSON)
-                completion(APIResponse.success(result: cities))
+                DispatchQueue.main.async {
+                    completion(APIResponse.success(result: cities))
+                }
             } catch {
                 let err = APIError.decodingJSON(message: "\(errorLocation) error during decoding countries : \(error.localizedDescription)")
                 DispatchQueue.main.async {
@@ -139,7 +143,9 @@ final public class Router {
             do {
                 let citiesJSON = try JSONDecoder().decode([CityJSON].self, from: data)
                 let cities = citiesJSON.map { City(from: $0) }
-                completion(APIResponse.success(result: cities))
+                DispatchQueue.main.async {
+                    completion(APIResponse.success(result: cities))
+                }
             } catch {
                 let err = APIError.decodingJSON(message: "\(errorLocation) error during decoding countries : \(error.localizedDescription)")
                 DispatchQueue.main.async {

@@ -31,6 +31,19 @@ final class LauncherViewController: UIViewController, CLLocationManagerDelegate 
         self.enableLocationServices()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        Router.shared.cities  { response in
+            switch response {
+            case .failure(let error): print(error.description)
+            case .success(let cities):
+                let city = cities.filter { $0.code == "BAR"}.first!
+                self.mapViewController.createPolyline(encodedPolylines: city.workingArea)
+            }
+        }
+    }
+    
     //MARK: CLLocationManagerDelegate methods
     
     func locationManager(_ manager: CLLocationManager,

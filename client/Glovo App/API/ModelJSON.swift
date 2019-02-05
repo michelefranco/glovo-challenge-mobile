@@ -36,9 +36,8 @@ public struct CityJSON: Decodable {
         self.code = try values.decode(String.self, forKey: .code)
         self.name = try values.decode(String.self, forKey: .name)
         self.countryCode = try values.decode(String.self, forKey: .countryCode)
-        var workingArea = try values.decode([String].self, forKey: .workingArea)
-        workingArea = workingArea.map { $0.unescaped }
-        self.workingArea = workingArea
+        self.workingArea = try values.decode([String].self, forKey: .workingArea)
+        
     }
 }
 
@@ -76,8 +75,6 @@ public struct CityDetailJSON: Decodable {
         self.busy = try values.decode(Bool.self, forKey: .busy)
         self.timeZone = try values.decode(String.self, forKey: .timeZone)
         self.languageCode = try values.decode(String.self, forKey: .languageCode)
-        var workingArea = try values.decode([String].self, forKey: .workingArea)
-        workingArea = workingArea.map { $0.unescaped }
-        self.workingArea = workingArea
+        self.workingArea = try values.decode([String].self, forKey: .workingArea)
     }
 }
