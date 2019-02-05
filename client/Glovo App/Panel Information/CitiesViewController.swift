@@ -1,4 +1,5 @@
 import UIKit
+import MapKit
 
 final class CitiesViewController: UIViewController {
     private let visualEffectView: UIVisualEffectView = {
@@ -8,6 +9,10 @@ final class CitiesViewController: UIViewController {
     
     private let containerView = UIView()
     private let citiesViewController = CitiesTableViewController()
+    
+    var countriesCount: Int {
+        return self.citiesViewController.countries.count
+    }
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -44,6 +49,10 @@ final class CitiesViewController: UIViewController {
         super.viewDidLayoutSubviews()
         self.visualEffectView.layer.cornerRadius = 9.0
         self.visualEffectView.clipsToBounds = true
+    }
+    
+    func locationIsInRange(countryName: String, cityName: String) -> City? {
+       return self.citiesViewController.locationIsInRange(countryName: countryName, cityName: cityName)
     }
     
     func reloadData(with countries: [Country], and cities: [City]) {

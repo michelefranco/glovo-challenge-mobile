@@ -5,7 +5,7 @@ final class CitiesTableViewController: UITableViewController {
     private var flagByCountry = ["AR": "🇦🇷", "BR": "🇧🇷", "PA": "🇵🇦", "CL": "🇨🇱", "PE": "🇵🇪",
                                  "PT": "🇵🇹", "FR": "🇫🇷", "IT": "🇮🇹", "CR": "🇨🇷", "EG": "🇪🇬" , "ES": "🇪🇸"]
     
-    private var countries = [Country]()
+    public private(set) var countries = [Country]()
     private var model = [String: [City]]()
     init() {
         super.init(style: .grouped)
@@ -38,6 +38,33 @@ final class CitiesTableViewController: UITableViewController {
         }
         
         self.tableView.reloadData()
+    }
+    
+    func locationIsInRange(countryName: String, cityName: String) -> City? {
+        let preprocessing: (String) -> String = { input in
+            return input.lowercased().replacingOccurrences(of: " ", with: "")
+        }
+        
+        let countryPreprocessing = preprocessing(countryName)
+        for country in self.countries {
+            let countryNameStored = preprocessing(country.name)
+            if countryNameStored == countryPreprocessing {
+                guard let cities = self.model[country.code] else {
+                    break
+                }
+                
+                let cityPreprocessing = preprocessing(cityName)
+                for city in cities {
+                    let cityNameStored = preprocessing(city.name)
+                    if cityNameStored == cityPreprocessing {
+                        return city
+                    }
+                }
+            }
+            
+        }
+        
+        return nil
     }
     
     //MARK: UITableViewDataSource methods
