@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B4109EB722099B22006CC52C /* CitiesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4109EB622099B22006CC52C /* CitiesTableViewController.swift */; };
 		B4552AF021FF04E600CA18AE /* firTest.json in Resources */ = {isa = PBXBuildFile; fileRef = B4552AEF21FF04E600CA18AE /* firTest.json */; };
 		B4552AF221FF328500CA18AE /* countriesTest.json in Resources */ = {isa = PBXBuildFile; fileRef = B4552AF121FF328200CA18AE /* countriesTest.json */; };
 		B458A31121FCCDD700C5990B /* LauncherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B458A31021FCCDD700C5990B /* LauncherViewController.swift */; };
@@ -22,6 +23,8 @@
 		B4C2B30021FCF88E00866E86 /* ModelJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C2B2FF21FCF88E00866E86 /* ModelJSON.swift */; };
 		B4DF2F9521FE356100FAC719 /* citiesTest.json in Resources */ = {isa = PBXBuildFile; fileRef = B4DF2F9421FE356100FAC719 /* citiesTest.json */; };
 		B4FB6CE42200F6270013AEA2 /* Polyline.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FB6CE32200F6270013AEA2 /* Polyline.swift */; };
+		B4FB6CEA2201000D0013AEA2 /* FloatingPanel.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4FB6CE92201000D0013AEA2 /* FloatingPanel.framework */; };
+		B4FB6CEC220100540013AEA2 /* CitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4FB6CEB220100540013AEA2 /* CitiesViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B4109EB622099B22006CC52C /* CitiesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesTableViewController.swift; sourceTree = "<group>"; };
 		B4552AEF21FF04E600CA18AE /* firTest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = firTest.json; sourceTree = "<group>"; };
 		B4552AF121FF328200CA18AE /* countriesTest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = countriesTest.json; sourceTree = "<group>"; };
 		B458A31021FCCDD700C5990B /* LauncherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LauncherViewController.swift; sourceTree = "<group>"; };
@@ -54,6 +58,8 @@
 		B4C2B2FF21FCF88E00866E86 /* ModelJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelJSON.swift; sourceTree = "<group>"; };
 		B4DF2F9421FE356100FAC719 /* citiesTest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = citiesTest.json; sourceTree = "<group>"; };
 		B4FB6CE32200F6270013AEA2 /* Polyline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Polyline.swift; sourceTree = "<group>"; };
+		B4FB6CE92201000D0013AEA2 /* FloatingPanel.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FloatingPanel.framework; sourceTree = "<group>"; };
+		B4FB6CEB220100540013AEA2 /* CitiesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +67,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B4FB6CEA2201000D0013AEA2 /* FloatingPanel.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -88,6 +95,7 @@
 				B463ADD421FCCC5E00F072BB /* Glovo App */,
 				B483478D21FE2B1A00F9060F /* Glovo AppTests */,
 				B463ADD321FCCC5E00F072BB /* Products */,
+				B4FB6CE82200FFED0013AEA2 /* Framework */,
 			);
 			sourceTree = "<group>";
 		};
@@ -103,6 +111,7 @@
 		B463ADD421FCCC5E00F072BB /* Glovo App */ = {
 			isa = PBXGroup;
 			children = (
+				B4FB6CED220100590013AEA2 /* Panel Information */,
 				B4FB6CE32200F6270013AEA2 /* Polyline.swift */,
 				B463ADE121FCCC6100F072BB /* Info.plist */,
 				B463ADD521FCCC5E00F072BB /* AppDelegate.swift */,
@@ -139,6 +148,24 @@
 			path = API;
 			sourceTree = "<group>";
 		};
+		B4FB6CE82200FFED0013AEA2 /* Framework */ = {
+			isa = PBXGroup;
+			children = (
+				B4FB6CE92201000D0013AEA2 /* FloatingPanel.framework */,
+			);
+			name = Framework;
+			path = Carthage/Build/iOS;
+			sourceTree = "<group>";
+		};
+		B4FB6CED220100590013AEA2 /* Panel Information */ = {
+			isa = PBXGroup;
+			children = (
+				B4FB6CEB220100540013AEA2 /* CitiesViewController.swift */,
+				B4109EB622099B22006CC52C /* CitiesTableViewController.swift */,
+			);
+			path = "Panel Information";
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -149,6 +176,7 @@
 				B463ADCE21FCCC5E00F072BB /* Sources */,
 				B463ADCF21FCCC5E00F072BB /* Frameworks */,
 				B463ADD021FCCC5E00F072BB /* Resources */,
+				B4FB6CE52200FFA60013AEA2 /* Carthage Frameworks */,
 			);
 			buildRules = (
 			);
@@ -237,12 +265,35 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		B4FB6CE52200FFA60013AEA2 /* Carthage Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/FloatingPanel.framework",
+			);
+			name = "Carthage Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		B463ADCE21FCCC5E00F072BB /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				B4FB6CE42200F6270013AEA2 /* Polyline.swift in Sources */,
+				B4FB6CEC220100540013AEA2 /* CitiesViewController.swift in Sources */,
 				B4C2B30021FCF88E00866E86 /* ModelJSON.swift in Sources */,
 				B458A31121FCCDD700C5990B /* LauncherViewController.swift in Sources */,
 				B458A31421FCD17000C5990B /* MapViewController.swift in Sources */,
@@ -250,6 +301,7 @@
 				B4B4FA2421FCFD90005CD17B /* Model.swift in Sources */,
 				B46FE80521FE126D0039729D /* APIResponse.swift in Sources */,
 				B463ADD621FCCC5E00F072BB /* AppDelegate.swift in Sources */,
+				B4109EB722099B22006CC52C /* CitiesTableViewController.swift in Sources */,
 				B458A31621FCD19100C5990B /* Extensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -406,6 +458,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T24S44J7TL;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "Glovo App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -424,6 +480,10 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = T24S44J7TL;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "Glovo App/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

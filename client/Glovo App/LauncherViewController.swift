@@ -1,11 +1,14 @@
 import UIKit
 import MapKit
 import CoreLocation
+import FloatingPanel
 
-final class LauncherViewController: UIViewController, CLLocationManagerDelegate {
+final class LauncherViewController: UIViewController, CLLocationManagerDelegate, FloatingPanelControllerDelegate {
     private let containerView = UIView()
     private let mapViewController = MapViewController()
+    private let citiesViewController = CitiesViewController()
     private let locationManager = CLLocationManager()
+    private var fpc: FloatingPanelController!
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .default
@@ -29,20 +32,9 @@ final class LauncherViewController: UIViewController, CLLocationManagerDelegate 
         
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
         self.enableLocationServices()
+        self.setModel()
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        Router.shared.cities  { response in
-            switch response {
-            case .failure(let error): print(error.description)
-            case .success(let cities):
-                let city = cities.filter { $0.code == "BAR"}.first!
-                self.mapViewController.createPolyline(encodedPolylines: city.workingArea)
-            }
-        }
-    }
     
     //MARK: CLLocationManagerDelegate methods
     
@@ -83,8 +75,71 @@ final class LauncherViewController: UIViewController, CLLocationManagerDelegate 
         self.mapViewController.update(with: region)
     }
     
+    //MARK: private methods
+    private func setModel() {
+        let group = DispatchGroup()
+        
+        group.enter()
+        group.enter()
+        var countries = [Country]()
+        var cities = [City]()
+        Router.shared.countries { response in
+            switch response {
+            case .failure(let error):
+                print("ERROR \(error.description)")
+            case .success(let result):
+                countries = result
+            }
+            
+            group.leave()
+        }
+        
+        Router.shared.cities { response in
+            switch response {
+            case .failure(let error):
+                print("ERROR \(error.description)")
+            case .success(let result):
+                cities = result
+            }
+            group.leave()
+        }
+        
+        group.notify(queue: .main) {
+            self.citiesViewController.reloadData(with: countries, and: cities)
+            self.setInterface(with: countries, and: cities)
+        }
+    }
     
-    // MARK: private function for supporting the Location
+    
+    private func setInterface(with countries: [Country], and cities: [City]) {
+        self.citiesViewController.reloadData(with: countries, and: cities)
+        fpc = FloatingPanelController()
+        fpc.delegate = self
+        fpc.surfaceView.backgroundColor = .clear
+        fpc.surfaceView.cornerRadius = 9.0
+        fpc.surfaceView.shadowHidden = false
+        
+        // Set a content view controller
+        fpc.set(contentViewController: self.citiesViewController)
+        fpc.track(scrollView: self.citiesViewController.scrollView)
+        fpc.addPanel(toParent: self, animated: true)
+    }
+    
+    // MARK: FloatingPanelControllerDelegate
+    func floatingPanel(_ vc: FloatingPanelController, layoutFor newCollection: UITraitCollection) -> FloatingPanelLayout? {
+        switch newCollection.verticalSizeClass {
+        case .compact:
+            fpc.surfaceView.borderWidth = 1.0 / traitCollection.displayScale
+            fpc.surfaceView.borderColor = UIColor.black.withAlphaComponent(0.2)
+            return PanelLandscapeLayout()
+        default:
+            fpc.surfaceView.borderWidth = 0.0
+            fpc.surfaceView.borderColor = nil
+            return nil
+        }
+    }
+    
+    // MARK: private methods for supporting the Location
     private func enableLocationServices() {
         self.locationManager.delegate = self
         
@@ -124,5 +179,20 @@ final class LauncherViewController: UIViewController, CLLocationManagerDelegate 
         if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
             self.locationManager.requestAlwaysAuthorization()
         }
+    }
+}
+
+
+public class PanelLandscapeLayout: FloatingPanelLayout {
+    public var initialPosition: FloatingPanelPosition {
+        return .tip
+    }
+    
+    public var supportedPositions: Set<FloatingPanelPosition> {
+        return [.full, .tip]
+    }
+    
+    public func insetFor(position: FloatingPanelPosition) -> CGFloat? {
+        return nil
     }
 }
