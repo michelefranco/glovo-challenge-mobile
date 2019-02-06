@@ -1,6 +1,6 @@
 import UIKit
 
-public protocol CityTableViewDelegate: class {
+protocol CityTableViewDelegate: class {
     func didSelect(city: City)
 }
 
@@ -9,10 +9,10 @@ final class CitiesTableViewController: UITableViewController {
     private var flagByCountry = ["AR": "🇦🇷", "BR": "🇧🇷", "PA": "🇵🇦", "CL": "🇨🇱", "PE": "🇵🇪",
                                  "PT": "🇵🇹", "FR": "🇫🇷", "IT": "🇮🇹", "CR": "🇨🇷", "EG": "🇪🇬" , "ES": "🇪🇸"]
     
-    public private(set) var countries = [Country]()
+    private(set) var countries = [Country]()
     private var model = [String: [City]]()
     weak var delegate: CityTableViewDelegate?
-
+    
     init() {
         super.init(style: .grouped)
     }
@@ -28,6 +28,7 @@ final class CitiesTableViewController: UITableViewController {
         self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: self.reuseIdentifier)
     }
     
+    //MARK: Methods
     func reloadData(with countries: [Country], and cities: [City]) {
         self.countries = countries
         self.model.removeAll()
@@ -73,7 +74,7 @@ final class CitiesTableViewController: UITableViewController {
         return nil
     }
     
-    //MARK: UITableViewDataSource methods
+    //MARK: UITableViewDataSource
     
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         let country = self.countries[section]

@@ -22,7 +22,6 @@ import MapKit
 ///
 /// :see: https://developers.google.com/maps/documentation/utilities/polylinealgorithm
 public struct Polyline {
-    
     /// The array of coordinates (nil if polyline cannot be decoded)
     public let coordinates: [CLLocationCoordinate2D]?
     /// The encoded polyline

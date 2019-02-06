@@ -53,6 +53,7 @@ final class LauncherViewController: UIViewController, CLLocationManagerDelegate,
     }
     
     //MARK: CityTableViewDelegate Methods
+    
     func didSelect(city: City) {
         self.mapViewController.setVisibleMapArea(with: city)
         self.fpc.move(to: .hidden, animated: true) {
@@ -298,20 +299,6 @@ final class LauncherViewController: UIViewController, CLLocationManagerDelegate,
     private func escalateLocationServiceAuthorization() {
         if CLLocationManager.authorizationStatus() == .authorizedWhenInUse {
             self.locationManager.requestAlwaysAuthorization()
-        }
-    }
-}
-
-public class PanelCompactLayout: FloatingPanelLayout {
-    public var initialPosition: FloatingPanelPosition {
-        return .hidden
-    }
-    
-    public func insetFor(position: FloatingPanelPosition) -> CGFloat? {
-        switch position {
-        case .full: return 16.0 // A top inset from safe area
-        case .half: return 216.0 // A bottom inset from the safe area
-        default: return 0 // Or `case .hidden: return nil`
         }
     }
 }

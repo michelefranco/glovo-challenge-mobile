@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		B4109EB722099B22006CC52C /* CitiesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4109EB622099B22006CC52C /* CitiesTableViewController.swift */; };
 		B4109EB922099D14006CC52C /* LocationServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4109EB822099D14006CC52C /* LocationServices.swift */; };
+		B427FE17220AF71A0077AB04 /* CityAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B427FE16220AF71A0077AB04 /* CityAnnotation.swift */; };
+		B427FE19220AF9350077AB04 /* PanelVerticalLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B427FE18220AF9350077AB04 /* PanelVerticalLayout.swift */; };
 		B4552AF021FF04E600CA18AE /* firTest.json in Resources */ = {isa = PBXBuildFile; fileRef = B4552AEF21FF04E600CA18AE /* firTest.json */; };
 		B4552AF221FF328500CA18AE /* countriesTest.json in Resources */ = {isa = PBXBuildFile; fileRef = B4552AF121FF328200CA18AE /* countriesTest.json */; };
 		B458A31121FCCDD700C5990B /* LauncherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B458A31021FCCDD700C5990B /* LauncherViewController.swift */; };
@@ -42,6 +44,8 @@
 		B4109EB622099B22006CC52C /* CitiesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesTableViewController.swift; sourceTree = "<group>"; };
 		B4109EB822099D14006CC52C /* LocationServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationServices.swift; sourceTree = "<group>"; };
 		B4109EBA2209CE04006CC52C /* bariLocation.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = bariLocation.gpx; path = ../../../../Desktop/bariLocation.gpx; sourceTree = "<group>"; };
+		B427FE16220AF71A0077AB04 /* CityAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityAnnotation.swift; sourceTree = "<group>"; };
+		B427FE18220AF9350077AB04 /* PanelVerticalLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelVerticalLayout.swift; sourceTree = "<group>"; };
 		B4552AEF21FF04E600CA18AE /* firTest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = firTest.json; sourceTree = "<group>"; };
 		B4552AF121FF328200CA18AE /* countriesTest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = countriesTest.json; sourceTree = "<group>"; };
 		B458A31021FCCDD700C5990B /* LauncherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LauncherViewController.swift; sourceTree = "<group>"; };
@@ -88,6 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				B458A31321FCD17000C5990B /* MapViewController.swift */,
+				B427FE16220AF71A0077AB04 /* CityAnnotation.swift */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -167,6 +172,7 @@
 			children = (
 				B4FB6CEB220100540013AEA2 /* CitiesViewController.swift */,
 				B4109EB622099B22006CC52C /* CitiesTableViewController.swift */,
+				B427FE18220AF9350077AB04 /* PanelVerticalLayout.swift */,
 			);
 			path = "Panel Information";
 			sourceTree = "<group>";
@@ -299,9 +305,11 @@
 			files = (
 				B4FB6CE42200F6270013AEA2 /* Polyline.swift in Sources */,
 				B4FB6CEC220100540013AEA2 /* CitiesViewController.swift in Sources */,
+				B427FE17220AF71A0077AB04 /* CityAnnotation.swift in Sources */,
 				B4C2B30021FCF88E00866E86 /* ModelJSON.swift in Sources */,
 				B458A31121FCCDD700C5990B /* LauncherViewController.swift in Sources */,
 				B458A31421FCD17000C5990B /* MapViewController.swift in Sources */,
+				B427FE19220AF9350077AB04 /* PanelVerticalLayout.swift in Sources */,
 				B499564521FDFBEB000C8A3D /* Router.swift in Sources */,
 				B4B4FA2421FCFD90005CD17B /* Model.swift in Sources */,
 				B46FE80521FE126D0039729D /* APIResponse.swift in Sources */,

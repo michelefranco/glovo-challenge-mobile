@@ -15,10 +15,6 @@ final class CitiesViewController: UIViewController {
         return self.citiesViewController.countries.count
     }
     
-    func scrollToTop() {
-        self.citiesViewController.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
-    }
-    
     init() {
         super.init(nibName: nil, bundle: nil)
     }
@@ -31,6 +27,7 @@ final class CitiesViewController: UIViewController {
         return self.citiesViewController.tableView
     }
     
+    //MARK: View Controller Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -57,11 +54,16 @@ final class CitiesViewController: UIViewController {
         self.visualEffectView.clipsToBounds = true
     }
 
+    //MARK: Methods
     func locationIsInRange(countryName: String, cityName: String) -> City? {
        return self.citiesViewController.locationIsInRange(countryName: countryName, cityName: cityName)
     }
     
     func reloadData(with countries: [Country], and cities: [City]) {
         self.citiesViewController.reloadData(with: countries, and: cities)
+    }
+    
+    func scrollToTop() {
+        self.citiesViewController.tableView.scrollToRow(at: IndexPath(row: 0, section: 0), at: .top, animated: true)
     }
 }

@@ -9,7 +9,7 @@ public class Country {
         self.code = code
     }
     
-    convenience init(from json: CountryJSON) {
+    public convenience init(from json: CountryJSON) {
         self.init(code: json.code, name: json.name)
     }
 }
@@ -36,14 +36,14 @@ public class City: Hashable {
         self.workingArea = workingArea.filter { !$0.isEmpty }
     }
     
-    convenience init(from json: CityJSON) {
+    public convenience init(from json: CityJSON) {
         self.init(code: json.code,
                   name: json.name,
                   countryCode: json.countryCode,
                   workingArea: json.workingArea)
     }
     
-    convenience init(from json: CityDetailJSON) {
+    public convenience init(from json: CityDetailJSON) {
         self.init(code: json.code,
                   name: json.name,
                   countryCode: json.countryCode,

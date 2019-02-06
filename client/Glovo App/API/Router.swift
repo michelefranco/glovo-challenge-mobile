@@ -1,6 +1,6 @@
 import Foundation
 
-final public class Router {
+final class Router {
     private let baseEndpoint: URL? = {
         let url = URL(string: "http://localhost:3000/api/")
         return url
@@ -11,7 +11,7 @@ final public class Router {
     private init() {}
     
     //MARK: Methods
-    public func countries(timeOut: TimeInterval = 10, _ completion: @escaping (APIResponse<[Country]>) -> ()) {
+    func countries(timeOut: TimeInterval = 10, _ completion: @escaping (APIResponse<[Country]>) -> ()) {
         
         let errorLocation = "Router.countries -"
         
@@ -61,7 +61,7 @@ final public class Router {
     }
     
     //MARK: Methods
-    public func city(cityCode: String, timeOut: TimeInterval = 10, _ completion: @escaping (APIResponse<City>) -> ()) {
+    func city(cityCode: String, timeOut: TimeInterval = 10, _ completion: @escaping (APIResponse<City>) -> ()) {
         let errorLocation = "Router.city -"
         
         let url = self.baseEndpoint?.appendingPathComponent("cities").appendingPathComponent("\(cityCode)")
@@ -109,7 +109,7 @@ final public class Router {
             }.resume()
     }
     
-    public func cities(timeOut: TimeInterval = 10, _ completion: @escaping (APIResponse<[City]>) -> ()) {
+    func cities(timeOut: TimeInterval = 10, _ completion: @escaping (APIResponse<[City]>) -> ()) {
         
         let errorLocation = "Router.cities -"
         

@@ -3,7 +3,7 @@ import CoreLocation
 
 final class LocationServices {
     static let shared = LocationServices()
-    public var location: CLLocation?
+    var location: CLLocation?
     private init() {}
     
     func getAdress(from location: CLLocation, completion: @escaping (_ address: [AnyHashable: Any]?, _ error: Error?) -> ()) {

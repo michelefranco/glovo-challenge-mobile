@@ -63,7 +63,6 @@ extension UIColor {
     }
 }
 
-
 extension String {
     var unescaped: String {
         let entities = ["\0": "\\0",
@@ -82,7 +81,6 @@ extension String {
 }
 
 extension MKPolygon {
-    
     var points: [MKMapPoint] {
         let polygonPoints = self.points()
         
@@ -94,4 +92,10 @@ extension MKPolygon {
         
         return result
     }
+}
+
+extension CLLocationCoordinate2D: Equatable {}
+
+public func ==(lhs: CLLocationCoordinate2D, rhs: CLLocationCoordinate2D) -> Bool {
+    return (lhs.latitude == rhs.latitude && lhs.longitude == rhs.longitude)
 }
