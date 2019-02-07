@@ -97,7 +97,6 @@ final class MapViewController: UIViewController, MKMapViewDelegate {
         return path.contains(point)
     }
     
-    
     private func polygons(for city: City) -> [MKPolygon] {
         let polygons: [MKPolygon]
         if let p = self.polygonsCity[city.uniqueKey] {
@@ -141,7 +140,6 @@ final class MapViewController: UIViewController, MKMapViewDelegate {
         
         // set the image to the annotation view
         annotationView.image = annotation.image
-        
         return annotationView
     }
     

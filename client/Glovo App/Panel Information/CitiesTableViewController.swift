@@ -6,8 +6,6 @@ protocol CityTableViewDelegate: class {
 
 final class CitiesTableViewController: UITableViewController {
     private let reuseIdentifier = "CitiesViewControllerIdentifier"
-    private var flagByCountry = ["AR": "🇦🇷", "BR": "🇧🇷", "PA": "🇵🇦", "CL": "🇨🇱", "PE": "🇵🇪",
-                                 "PT": "🇵🇹", "FR": "🇫🇷", "IT": "🇮🇹", "CR": "🇨🇷", "EG": "🇪🇬" , "ES": "🇪🇸"]
     
     private(set) var countries = [Country]()
     private var model = [String: [City]]()
@@ -79,7 +77,7 @@ final class CitiesTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         let country = self.countries[section]
         var result = country.name
-        if let flag = self.flagByCountry[country.code] {
+        if let flag = Country.flag(countryCode: country.code) {
             result = flag.appending(" \(result)")
         }
         

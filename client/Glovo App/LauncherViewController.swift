@@ -11,8 +11,11 @@ final class LauncherViewController: UIViewController, CLLocationManagerDelegate,
     private let logoButton = UIButton()
     private var fpc: FloatingPanelController!
     private var layoutIsSet = false
-        private var logoActivatedRightAnchor: NSLayoutConstraint!
+    private var logoActivatedRightAnchor: NSLayoutConstraint!
     private var logoDeactivatedRightAnchor: NSLayoutConstraint!
+    private var panelInfoActivatedTopAnchor: NSLayoutConstraint!
+    private var panelInfoDeactivatedTopAnchor: NSLayoutConstraint!
+    private let panelInfoView = PanelInfoView()
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .default
     }
@@ -32,13 +35,33 @@ final class LauncherViewController: UIViewController, CLLocationManagerDelegate,
         self.setModel()
         self.view.addSubview(self.containerView)
         self.containerView.fillConstraintsToSuperview()
+        
         self.addChild(self.mapViewController, in: self.containerView)
         
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
         self.enableLocationServices()
         self.citiesViewController.citiesDelegate = self
         
+        //         if CLLocationManager.locationServicesEnabled() {
+        //        switch CLLocationManager.authorizationStatus() {
+        //        case .
+        //        }
+        //    }
+        
         self.setButtonLogo()
+        
+        self.view.addSubview(self.panelInfoView)
+        self.panelInfoView.translatesAutoresizingMaskIntoConstraints = false
+        
+        self.panelInfoDeactivatedTopAnchor = self.panelInfoView.topAnchor.constraint(equalTo: self.view.bottomAnchor)
+        self.panelInfoActivatedTopAnchor = self.panelInfoView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
+        
+        NSLayoutConstraint.activate([
+            self.panelInfoView.widthAnchor.constraint(equalTo: self.view.widthAnchor),
+            self.panelInfoView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.2),
+            self.panelInfoView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            self.panelInfoDeactivatedTopAnchor
+            ])
     }
     
     override func viewDidLayoutSubviews() {
@@ -59,6 +82,15 @@ final class LauncherViewController: UIViewController, CLLocationManagerDelegate,
         self.fpc.move(to: .hidden, animated: true) {
             self.fpc.removePanelFromParent(animated: true) {
                 self.showLogoButton()
+                Router.shared.city(cityCode: city.code) { response in
+                    switch response {
+                    case .failure(let error):
+                        print(error.description)
+                    case .success(let result):
+                        self.showPanelInfoView(with: result)
+                        
+                    }
+                }
             }
         }
     }
@@ -111,7 +143,6 @@ final class LauncherViewController: UIViewController, CLLocationManagerDelegate,
     
     //MARK: private methods
     private func setLayoutForLogo() {
-        
         let proportionalTopAnchor = self.view.bounds.height * 0.07
         NSLayoutConstraint.activate([self.view.topAnchor.constraint(equalTo: self.logoButton.topAnchor, constant: -proportionalTopAnchor)])
         self.logoButton.layer.borderColor = UIColor(hex: 0xFEDA54).cgColor
@@ -124,7 +155,8 @@ final class LauncherViewController: UIViewController, CLLocationManagerDelegate,
         if self.fpc.position == .hidden {
             self.citiesViewController.scrollToTop()
             self.fpc.addPanel(toParent: self)
-            self.hideLogoButton() {
+            self.hideLogoButton()
+            self.hidePanelInfoView() {
                 self.fpc.move(to: .half, animated: true)
             }
         }
@@ -147,6 +179,32 @@ final class LauncherViewController: UIViewController, CLLocationManagerDelegate,
             ])
     }
     
+    private func showPanelInfoView(with city: City, completion: (() -> ())? = nil) {
+        self.panelInfoView.reload(with: city)
+        self.panelInfoDeactivatedTopAnchor.isActive = false
+        self.panelInfoActivatedTopAnchor.isActive = true
+        self.view.setNeedsLayout()
+        
+        UIView.animate(withDuration: 0.3, animations: {
+            self.view.layoutIfNeeded()
+        }) { _ in
+            completion?()
+        }
+    }
+    
+    private func hidePanelInfoView(completion: (() -> ())? = nil) {
+        self.panelInfoActivatedTopAnchor.isActive = false
+        self.panelInfoDeactivatedTopAnchor.isActive = true
+        
+        self.view.setNeedsLayout()
+        
+        UIView.animate(withDuration: 0.3, animations: {
+            self.view.layoutIfNeeded()
+        }) { _ in
+            completion?()
+        }
+    }
+    
     private func showLogoButton(completion: (() -> ())? = nil) {
         self.logoDeactivatedRightAnchor.isActive = false
         self.logoActivatedRightAnchor.isActive = true
@@ -162,7 +220,7 @@ final class LauncherViewController: UIViewController, CLLocationManagerDelegate,
     private func hideLogoButton(completion: (() -> ())? = nil) {
         self.logoActivatedRightAnchor.isActive = false
         self.logoDeactivatedRightAnchor.isActive = true
-
+        
         self.view.setNeedsLayout()
         
         UIView.animate(withDuration: 0.3, animations: {
@@ -205,7 +263,7 @@ final class LauncherViewController: UIViewController, CLLocationManagerDelegate,
             self.setInterface(with: countries, and: cities)
             
             if let location = LocationServices.shared.location {
-               self.setInterface(for: location)
+                self.setInterface(for: location)
             }
         }
     }
@@ -215,7 +273,7 @@ final class LauncherViewController: UIViewController, CLLocationManagerDelegate,
             guard let address = address,
                 let countryName = address["Country"] as? String,
                 let cityName = address["City"] as? String else {
-                return
+                    return
             }
             
             let city = self.citiesViewController.locationIsInRange(countryName: countryName, cityName: cityName)
@@ -255,9 +313,9 @@ final class LauncherViewController: UIViewController, CLLocationManagerDelegate,
     }
     
     func floatingPanel(_ vc: FloatingPanelController, layoutFor newCollection: UITraitCollection) -> FloatingPanelLayout? {
-            fpc.surfaceView.borderWidth = 1.0 / traitCollection.displayScale
-            fpc.surfaceView.borderColor = UIColor.black.withAlphaComponent(0.2)
-            return PanelCompactLayout()
+        fpc.surfaceView.borderWidth = 1.0 / traitCollection.displayScale
+        fpc.surfaceView.borderColor = UIColor.black.withAlphaComponent(0.2)
+        return PanelCompactLayout()
     }
     
     // MARK: private methods for supporting the Location

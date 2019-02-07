@@ -12,6 +12,14 @@ public class Country {
     public convenience init(from json: CountryJSON) {
         self.init(code: json.code, name: json.name)
     }
+    
+    private static let flagByCountry = ["AR": "🇦🇷", "BR": "🇧🇷", "PA": "🇵🇦", "CL": "🇨🇱", "PE": "🇵🇪",
+                                 "PT": "🇵🇹", "FR": "🇫🇷", "IT": "🇮🇹", "CR": "🇨🇷", "EG": "🇪🇬" , "ES": "🇪🇸"]
+    
+    class func flag(countryCode: String) -> String? {
+        return self.flagByCountry[countryCode]
+    }
+    
 }
 
 public class City: Hashable {
