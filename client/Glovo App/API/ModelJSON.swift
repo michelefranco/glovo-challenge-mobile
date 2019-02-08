@@ -1,6 +1,5 @@
 import Foundation
 
-
 public struct CountryJSON: Decodable {
     public let code: String
     public let name: String

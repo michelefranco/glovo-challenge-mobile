@@ -1,17 +1,17 @@
 import Foundation
 
-final class Router {
+public final class Router {
     private let baseEndpoint: URL? = {
         let url = URL(string: "http://localhost:3000/api/")
         return url
     }()
     
-    static let shared = Router()
+    public static let shared = Router()
     
     private init() {}
     
-    //MARK: Methods
-    func countries(timeOut: TimeInterval = 10, _ completion: @escaping (APIResponse<[Country]>) -> ()) {
+    //MARK: METHODS
+    public func countries(timeOut: TimeInterval = 10, _ completion: @escaping (APIResponse<[Country]>) -> ()) {
         
         let errorLocation = "Router.countries -"
         
@@ -60,8 +60,7 @@ final class Router {
             }.resume()
     }
     
-    //MARK: Methods
-    func city(cityCode: String, timeOut: TimeInterval = 10, _ completion: @escaping (APIResponse<City>) -> ()) {
+    public func city(cityCode: String, timeOut: TimeInterval = 10, _ completion: @escaping (APIResponse<City>) -> ()) {
         let errorLocation = "Router.city -"
         
         let url = self.baseEndpoint?.appendingPathComponent("cities").appendingPathComponent("\(cityCode)")
@@ -109,7 +108,7 @@ final class Router {
             }.resume()
     }
     
-    func cities(timeOut: TimeInterval = 10, _ completion: @escaping (APIResponse<[City]>) -> ()) {
+    public func cities(timeOut: TimeInterval = 10, _ completion: @escaping (APIResponse<[City]>) -> ()) {
         
         let errorLocation = "Router.cities -"
         
@@ -158,7 +157,8 @@ final class Router {
     }
     
     
-    //MARK: private methods
+    //MARK: PRIVATE METHODS
+    
     private func configuration(timeout: TimeInterval) -> URLSessionConfiguration {
         let urlconfig = URLSessionConfiguration.default
         urlconfig.timeoutIntervalForResource = timeout

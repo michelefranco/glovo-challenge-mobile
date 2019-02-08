@@ -1,12 +1,12 @@
 import UIKit
 import CoreLocation
 
-final class LocationServices {
-    static let shared = LocationServices()
-    var location: CLLocation?
+public final class LocationServices {
+    public static let shared = LocationServices()
+    public var location: CLLocation?
     private init() {}
     
-    func getAdress(from location: CLLocation, completion: @escaping (_ address: [AnyHashable: Any]?, _ error: Error?) -> ()) {
+    public func getAdress(from location: CLLocation, completion: @escaping (_ address: [AnyHashable: Any]?, _ error: Error?) -> ()) {
         
         self.location = location
         let geoCoder = CLGeocoder()

@@ -34,7 +34,7 @@ final class LauncherViewController: UIViewController, CLLocationManagerDelegate,
         fatalError("init(coder:) has not been implemented")
     }
     
-    //MARK: UIViewController's life cycle
+    //MARK: VIEW CONTROLLER LIFE CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -101,7 +101,6 @@ final class LauncherViewController: UIViewController, CLLocationManagerDelegate,
     }
     
     //MARK: CityTableViewDelegate Methods
-    
     func didSelect(city: City) {
         self.mapViewController.setVisibleMapArea(with: city)
         self.fpc.move(to: .hidden, animated: true) {
@@ -120,13 +119,14 @@ final class LauncherViewController: UIViewController, CLLocationManagerDelegate,
         }
     }
     
+    //MARK: ONBOARDING DELEGATE
     func getStartedPressed() {
         Configurator.shared.onBoardingIsTerminated = true
         self.enableLocationServices()
 
     }
     
-    //MARK: CLLocationManagerDelegate methods
+    //MARK: CORE LOCATION MANAGER METHODS
     
     func locationManager(_ manager: CLLocationManager,
                          didChangeAuthorization status: CLAuthorizationStatus) {

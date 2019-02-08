@@ -1,25 +1,25 @@
 import UIKit
 
-protocol CityTableViewDelegate: class {
+public protocol CityTableViewDelegate: class {
     func didSelect(city: City)
 }
 
-final class CitiesTableViewController: UITableViewController {
+public final class CitiesTableViewController: UITableViewController {
     private let reuseIdentifier = "CitiesViewControllerIdentifier"
     
     private(set) var countries = [Country]()
     private var model = [String: [City]]()
-    weak var delegate: CityTableViewDelegate?
+    public weak var delegate: CityTableViewDelegate?
     
-    init() {
+    public init() {
         super.init(style: .grouped)
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func viewDidLoad() {
+    public override func viewDidLoad() {
         super.viewDidLoad()
         
         self.view.backgroundColor = .clear
@@ -27,7 +27,7 @@ final class CitiesTableViewController: UITableViewController {
     }
     
     //MARK: Methods
-    func reloadData(with countries: [Country], and cities: [City]) {
+    public func reloadData(with countries: [Country], and cities: [City]) {
         self.countries = countries
         self.model.removeAll()
         
@@ -74,7 +74,7 @@ final class CitiesTableViewController: UITableViewController {
     
     //MARK: UITableViewDataSource
     
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    public override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         let country = self.countries[section]
         var result = country.name
         if let flag = Country.flag(countryCode: country.code) {
@@ -84,7 +84,7 @@ final class CitiesTableViewController: UITableViewController {
         return result
     }
     
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    public override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let code = self.countries[section].code
         
         guard let rows = self.model[code] else {
@@ -95,11 +95,11 @@ final class CitiesTableViewController: UITableViewController {
     }
     
     
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    public override func numberOfSections(in tableView: UITableView) -> Int {
         return self.countries.count
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    public override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: self.reuseIdentifier, for: indexPath)
         cell.backgroundColor = .clear
@@ -114,7 +114,7 @@ final class CitiesTableViewController: UITableViewController {
         return cell
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    public override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let code = self.countries[indexPath.section].code
         guard let cities = self.model[code] else {
             return

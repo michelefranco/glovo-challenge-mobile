@@ -7,7 +7,7 @@ final class MapViewController: UIViewController, MKMapViewDelegate {
     private var polygonsCity = [String: [MKPolygon]]()
     private var annotations = [CityAnnotation]()
     
-    init() {
+    public init() {
         super.init(nibName: nil, bundle: nil)
     }
     
@@ -15,7 +15,7 @@ final class MapViewController: UIViewController, MKMapViewDelegate {
         fatalError("init(coder:) has not been implemented")
     }
     
-    //MARK: View Controller life cycle
+    //MARK: VIEW CONTROLLER LIFE CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -73,7 +73,7 @@ final class MapViewController: UIViewController, MKMapViewDelegate {
         self.annotations.append(annotation)
     }
     
-    //MARK: Private Methods
+    //MARK: PRIVATE METHODS
     private func setVisibleMapArea(rect: MKMapRect, edgeInsets: UIEdgeInsets, animated: Bool = false) {
         self.mapView.setVisibleMapRect(rect, edgePadding: edgeInsets, animated: animated)
     }
@@ -126,7 +126,7 @@ final class MapViewController: UIViewController, MKMapViewDelegate {
         return polygons
     }
     
-    //MARK: MKMapViewDelegate
+    //MARK: MKMAPVIEW DELEGATE
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         let identifier = "City"
         guard let annotation = annotation as? CityAnnotation else { return nil }
@@ -168,7 +168,8 @@ final class MapViewController: UIViewController, MKMapViewDelegate {
     }
 }
 
-// MARK: PRIVATE EXTENSION
+// MARK: PRIVATE EXTENSIONS
+
 fileprivate extension City {
     var uniqueKey: String {
         return "\(self.countryCode)\(self.code)"
