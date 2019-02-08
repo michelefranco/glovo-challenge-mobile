@@ -1,7 +1,7 @@
 import UIKit
 import MapKit
 
-final class CitiesViewController: UIViewController {
+public final class CitiesViewController: UIViewController {
     private let visualEffectView: UIVisualEffectView = {
         let fx = UIBlurEffect(style: .extraLight)
        return UIVisualEffectView(effect: fx)
@@ -9,26 +9,26 @@ final class CitiesViewController: UIViewController {
     
     private let containerView = UIView()
     private let citiesViewController = CitiesTableViewController()
-    weak var citiesDelegate: CityTableViewDelegate?
+    public weak var citiesDelegate: CityTableViewDelegate?
     
-    var countriesCount: Int {
+    public var countriesCount: Int {
         return self.citiesViewController.countries.count
     }
     
-    init() {
+    public init() {
         super.init(nibName: nil, bundle: nil)
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    public required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    var scrollView: UIScrollView {
+    public var scrollView: UIScrollView {
         return self.citiesViewController.tableView
     }
     
     //MARK: View Controller Life Cycle
-    override func viewDidLoad() {
+   public override func viewDidLoad() {
         super.viewDidLoad()
         
         self.view.backgroundColor = .white
@@ -48,7 +48,7 @@ final class CitiesViewController: UIViewController {
         self.citiesViewController.delegate = self.citiesDelegate
     }
     
-    override func viewDidLayoutSubviews() {
+    public override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         self.visualEffectView.layer.cornerRadius = 9.0
         self.visualEffectView.clipsToBounds = true

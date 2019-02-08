@@ -11,7 +11,9 @@
 		B4109EB922099D14006CC52C /* LocationServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4109EB822099D14006CC52C /* LocationServices.swift */; };
 		B427FE17220AF71A0077AB04 /* CityAnnotation.swift in Sources */ = {isa = PBXBuildFile; fileRef = B427FE16220AF71A0077AB04 /* CityAnnotation.swift */; };
 		B427FE19220AF9350077AB04 /* PanelVerticalLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B427FE18220AF9350077AB04 /* PanelVerticalLayout.swift */; };
-		B427FE1C220C964D0077AB04 /* PanelInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B427FE1B220C964D0077AB04 /* PanelInformationView.swift */; };
+		B427FE1C220C964D0077AB04 /* InformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B427FE1B220C964D0077AB04 /* InformationView.swift */; };
+		B427FE22220D07E90077AB04 /* OnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B427FE21220D07E90077AB04 /* OnBoardingViewController.swift */; };
+		B427FE26220D08950077AB04 /* OnBoarding.xib in Resources */ = {isa = PBXBuildFile; fileRef = B427FE25220D08950077AB04 /* OnBoarding.xib */; };
 		B4552AF021FF04E600CA18AE /* firTest.json in Resources */ = {isa = PBXBuildFile; fileRef = B4552AEF21FF04E600CA18AE /* firTest.json */; };
 		B4552AF221FF328500CA18AE /* countriesTest.json in Resources */ = {isa = PBXBuildFile; fileRef = B4552AF121FF328200CA18AE /* countriesTest.json */; };
 		B458A31121FCCDD700C5990B /* LauncherViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B458A31021FCCDD700C5990B /* LauncherViewController.swift */; };
@@ -22,7 +24,11 @@
 		B463ADE021FCCC6100F072BB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B463ADDE21FCCC6100F072BB /* LaunchScreen.storyboard */; };
 		B46FE80521FE126D0039729D /* APIResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B46FE80421FE126D0039729D /* APIResponse.swift */; };
 		B483478F21FE2B1A00F9060F /* GlovoAPITest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B483478E21FE2B1A00F9060F /* GlovoAPITest.swift */; };
+		B48CC460220D82E000017B07 /* Configurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B48CC45F220D82E000017B07 /* Configurator.swift */; };
 		B499564521FDFBEB000C8A3D /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = B499564421FDFBEB000C8A3D /* Router.swift */; };
+		B4AAB35E220DBA4B009A0660 /* OnBoardingCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AAB35D220DBA4B009A0660 /* OnBoardingCollectionViewController.swift */; };
+		B4AAB360220DBACE009A0660 /* OnBoardingCell+Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AAB35F220DBACE009A0660 /* OnBoardingCell+Model.swift */; };
+		B4AAB362220DBD11009A0660 /* ErrorInformationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4AAB361220DBD11009A0660 /* ErrorInformationView.swift */; };
 		B4B4FA2421FCFD90005CD17B /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4B4FA2321FCFD90005CD17B /* Model.swift */; };
 		B4C2B30021FCF88E00866E86 /* ModelJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4C2B2FF21FCF88E00866E86 /* ModelJSON.swift */; };
 		B4DF2F9521FE356100FAC719 /* citiesTest.json in Resources */ = {isa = PBXBuildFile; fileRef = B4DF2F9421FE356100FAC719 /* citiesTest.json */; };
@@ -44,10 +50,12 @@
 /* Begin PBXFileReference section */
 		B4109EB622099B22006CC52C /* CitiesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesTableViewController.swift; sourceTree = "<group>"; };
 		B4109EB822099D14006CC52C /* LocationServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationServices.swift; sourceTree = "<group>"; };
-		B4109EBA2209CE04006CC52C /* bariLocation.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = bariLocation.gpx; path = ../../../../Desktop/bariLocation.gpx; sourceTree = "<group>"; };
 		B427FE16220AF71A0077AB04 /* CityAnnotation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityAnnotation.swift; sourceTree = "<group>"; };
 		B427FE18220AF9350077AB04 /* PanelVerticalLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelVerticalLayout.swift; sourceTree = "<group>"; };
-		B427FE1B220C964D0077AB04 /* PanelInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PanelInformationView.swift; sourceTree = "<group>"; };
+		B427FE1B220C964D0077AB04 /* InformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationView.swift; sourceTree = "<group>"; };
+		B427FE1F220CE80C0077AB04 /* bariLocation.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = bariLocation.gpx; sourceTree = "<group>"; };
+		B427FE21220D07E90077AB04 /* OnBoardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingViewController.swift; sourceTree = "<group>"; };
+		B427FE25220D08950077AB04 /* OnBoarding.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OnBoarding.xib; sourceTree = "<group>"; };
 		B4552AEF21FF04E600CA18AE /* firTest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = firTest.json; sourceTree = "<group>"; };
 		B4552AF121FF328200CA18AE /* countriesTest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = countriesTest.json; sourceTree = "<group>"; };
 		B458A31021FCCDD700C5990B /* LauncherViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LauncherViewController.swift; sourceTree = "<group>"; };
@@ -62,7 +70,11 @@
 		B483478C21FE2B1A00F9060F /* Glovo AppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Glovo AppTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B483478E21FE2B1A00F9060F /* GlovoAPITest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlovoAPITest.swift; sourceTree = "<group>"; };
 		B483479021FE2B1A00F9060F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B48CC45F220D82E000017B07 /* Configurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configurator.swift; sourceTree = "<group>"; };
 		B499564421FDFBEB000C8A3D /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		B4AAB35D220DBA4B009A0660 /* OnBoardingCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnBoardingCollectionViewController.swift; sourceTree = "<group>"; };
+		B4AAB35F220DBACE009A0660 /* OnBoardingCell+Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OnBoardingCell+Model.swift"; sourceTree = "<group>"; };
+		B4AAB361220DBD11009A0660 /* ErrorInformationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorInformationView.swift; sourceTree = "<group>"; };
 		B4B4FA2321FCFD90005CD17B /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		B4C2B2FF21FCF88E00866E86 /* ModelJSON.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelJSON.swift; sourceTree = "<group>"; };
 		B4DF2F9421FE356100FAC719 /* citiesTest.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = citiesTest.json; sourceTree = "<group>"; };
@@ -90,6 +102,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B427FE1D220CE77B0077AB04 /* Location Utility */ = {
+			isa = PBXGroup;
+			children = (
+				B4FB6CE32200F6270013AEA2 /* Polyline.swift */,
+				B4109EB822099D14006CC52C /* LocationServices.swift */,
+			);
+			path = "Location Utility";
+			sourceTree = "<group>";
+		};
+		B427FE1E220CE7E70077AB04 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B427FE1F220CE80C0077AB04 /* bariLocation.gpx */,
+				B48CC45F220D82E000017B07 /* Configurator.swift */,
+				B458A31521FCD19100C5990B /* Extensions.swift */,
+				B463ADDC21FCCC6100F072BB /* Assets.xcassets */,
+				B463ADDE21FCCC6100F072BB /* LaunchScreen.storyboard */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B427FE20220D07D80077AB04 /* On Boarding */ = {
+			isa = PBXGroup;
+			children = (
+				B4AAB35F220DBACE009A0660 /* OnBoardingCell+Model.swift */,
+				B4AAB35D220DBA4B009A0660 /* OnBoardingCollectionViewController.swift */,
+				B427FE21220D07E90077AB04 /* OnBoardingViewController.swift */,
+				B427FE25220D08950077AB04 /* OnBoarding.xib */,
+			);
+			path = "On Boarding";
+			sourceTree = "<group>";
+		};
 		B458A31221FCD15700C5990B /* Map */ = {
 			isa = PBXGroup;
 			children = (
@@ -102,7 +146,6 @@
 		B463ADC921FCCC5E00F072BB = {
 			isa = PBXGroup;
 			children = (
-				B4109EBA2209CE04006CC52C /* bariLocation.gpx */,
 				B463ADD421FCCC5E00F072BB /* Glovo App */,
 				B483478D21FE2B1A00F9060F /* Glovo AppTests */,
 				B463ADD321FCCC5E00F072BB /* Products */,
@@ -122,17 +165,15 @@
 		B463ADD421FCCC5E00F072BB /* Glovo App */ = {
 			isa = PBXGroup;
 			children = (
-				B463ADE121FCCC6100F072BB /* Info.plist */,
 				B463ADD521FCCC5E00F072BB /* AppDelegate.swift */,
-				B458A31521FCD19100C5990B /* Extensions.swift */,
+				B463ADE121FCCC6100F072BB /* Info.plist */,
 				B458A31021FCCDD700C5990B /* LauncherViewController.swift */,
-				B4109EB822099D14006CC52C /* LocationServices.swift */,
-				B4FB6CE32200F6270013AEA2 /* Polyline.swift */,
-				B463ADDC21FCCC6100F072BB /* Assets.xcassets */,
+				B427FE20220D07D80077AB04 /* On Boarding */,
 				B4C2B2FE21FCF87300866E86 /* API */,
-				B463ADDE21FCCC6100F072BB /* LaunchScreen.storyboard */,
+				B427FE1D220CE77B0077AB04 /* Location Utility */,
 				B458A31221FCD15700C5990B /* Map */,
 				B4FB6CED220100590013AEA2 /* Panel Information */,
+				B427FE1E220CE7E70077AB04 /* Supporting Files */,
 			);
 			path = "Glovo App";
 			sourceTree = "<group>";
@@ -175,7 +216,8 @@
 				B4FB6CEB220100540013AEA2 /* CitiesViewController.swift */,
 				B4109EB622099B22006CC52C /* CitiesTableViewController.swift */,
 				B427FE18220AF9350077AB04 /* PanelVerticalLayout.swift */,
-				B427FE1B220C964D0077AB04 /* PanelInformationView.swift */,
+				B427FE1B220C964D0077AB04 /* InformationView.swift */,
+				B4AAB361220DBD11009A0660 /* ErrorInformationView.swift */,
 			);
 			path = "Panel Information";
 			sourceTree = "<group>";
@@ -263,6 +305,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B463ADE021FCCC6100F072BB /* LaunchScreen.storyboard in Resources */,
+				B427FE26220D08950077AB04 /* OnBoarding.xib in Resources */,
 				B463ADDD21FCCC6100F072BB /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -307,17 +350,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				B4FB6CE42200F6270013AEA2 /* Polyline.swift in Sources */,
+				B48CC460220D82E000017B07 /* Configurator.swift in Sources */,
 				B4FB6CEC220100540013AEA2 /* CitiesViewController.swift in Sources */,
 				B427FE17220AF71A0077AB04 /* CityAnnotation.swift in Sources */,
+				B4AAB362220DBD11009A0660 /* ErrorInformationView.swift in Sources */,
 				B4C2B30021FCF88E00866E86 /* ModelJSON.swift in Sources */,
+				B4AAB35E220DBA4B009A0660 /* OnBoardingCollectionViewController.swift in Sources */,
 				B458A31121FCCDD700C5990B /* LauncherViewController.swift in Sources */,
 				B458A31421FCD17000C5990B /* MapViewController.swift in Sources */,
 				B427FE19220AF9350077AB04 /* PanelVerticalLayout.swift in Sources */,
 				B499564521FDFBEB000C8A3D /* Router.swift in Sources */,
+				B4AAB360220DBACE009A0660 /* OnBoardingCell+Model.swift in Sources */,
 				B4B4FA2421FCFD90005CD17B /* Model.swift in Sources */,
 				B46FE80521FE126D0039729D /* APIResponse.swift in Sources */,
 				B463ADD621FCCC5E00F072BB /* AppDelegate.swift in Sources */,
-				B427FE1C220C964D0077AB04 /* PanelInformationView.swift in Sources */,
+				B427FE22220D07E90077AB04 /* OnBoardingViewController.swift in Sources */,
+				B427FE1C220C964D0077AB04 /* InformationView.swift in Sources */,
 				B4109EB722099B22006CC52C /* CitiesTableViewController.swift in Sources */,
 				B4109EB922099D14006CC52C /* LocationServices.swift in Sources */,
 				B458A31621FCD19100C5990B /* Extensions.swift in Sources */,

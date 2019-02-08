@@ -3,8 +3,9 @@ import MapKit
 import CoreLocation
 import FloatingPanel
 
-final class LauncherViewController: UIViewController, CLLocationManagerDelegate, FloatingPanelControllerDelegate, CityTableViewDelegate {
+final class LauncherViewController: UIViewController, CLLocationManagerDelegate, FloatingPanelControllerDelegate, CityTableViewDelegate, OnBoardingDelegate {
     private let containerView = UIView()
+    private var onBoardingContainerView: UIView?
     private let mapViewController = MapViewController()
     private let citiesViewController = CitiesViewController()
     private let locationManager = CLLocationManager()
@@ -15,7 +16,12 @@ final class LauncherViewController: UIViewController, CLLocationManagerDelegate,
     private var logoDeactivatedRightAnchor: NSLayoutConstraint!
     private var panelInfoActivatedTopAnchor: NSLayoutConstraint!
     private var panelInfoDeactivatedTopAnchor: NSLayoutConstraint!
+    private var errorInfoActivatedTopAnchor: NSLayoutConstraint!
+    private var errorInfoDeactivatedTopAnchor: NSLayoutConstraint!
     private let panelInfoView = PanelInfoView()
+    private let errorView = PanelInfoErrorView()
+    private var onBoardingViewController: OnBoardingViewController?
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .default
     }
@@ -28,28 +34,19 @@ final class LauncherViewController: UIViewController, CLLocationManagerDelegate,
         fatalError("init(coder:) has not been implemented")
     }
     
-    //MARK: UIViewController's life cycle
+    //MARK: VIEW CONTROLLER LIFE CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.setModel()
+        self.locationManager.delegate = self
+
         self.view.addSubview(self.containerView)
         self.containerView.fillConstraintsToSuperview()
-        
         self.addChild(self.mapViewController, in: self.containerView)
         
         self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
-        self.enableLocationServices()
         self.citiesViewController.citiesDelegate = self
-        
-        //         if CLLocationManager.locationServicesEnabled() {
-        //        switch CLLocationManager.authorizationStatus() {
-        //        case .
-        //        }
-        //    }
-        
-        self.setButtonLogo()
-        
+       
         self.view.addSubview(self.panelInfoView)
         self.panelInfoView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -62,6 +59,34 @@ final class LauncherViewController: UIViewController, CLLocationManagerDelegate,
             self.panelInfoView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             self.panelInfoDeactivatedTopAnchor
             ])
+        
+        self.view.addSubview(self.errorView)
+        self.errorView.translatesAutoresizingMaskIntoConstraints = false
+        
+        self.errorInfoDeactivatedTopAnchor = self.errorView.topAnchor.constraint(equalTo: self.view.bottomAnchor)
+        self.errorInfoActivatedTopAnchor = self.errorView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor)
+        
+        NSLayoutConstraint.activate([
+            self.errorView.widthAnchor.constraint(equalTo: self.view.widthAnchor),
+            self.errorView.heightAnchor.constraint(equalTo: self.view.heightAnchor, multiplier: 0.2),
+            self.errorView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            self.errorInfoDeactivatedTopAnchor
+            ])
+        
+        self.setButtonLogo()
+        
+        if !Configurator.shared.onBoardingIsTerminated {
+            let containerOnBoarding = UIView()
+            let onBoardingViewController = OnBoardingViewController()
+            onBoardingViewController.delegate = self
+            self.view.addSubview(containerOnBoarding)
+            containerOnBoarding.fillConstraintsToSuperview()
+            self.addChild(onBoardingViewController, in: containerOnBoarding)
+            self.onBoardingContainerView = containerOnBoarding
+            self.onBoardingViewController = onBoardingViewController
+        }
+        
+        self.setModel()
     }
     
     override func viewDidLayoutSubviews() {
@@ -76,7 +101,6 @@ final class LauncherViewController: UIViewController, CLLocationManagerDelegate,
     }
     
     //MARK: CityTableViewDelegate Methods
-    
     func didSelect(city: City) {
         self.mapViewController.setVisibleMapArea(with: city)
         self.fpc.move(to: .hidden, animated: true) {
@@ -95,7 +119,14 @@ final class LauncherViewController: UIViewController, CLLocationManagerDelegate,
         }
     }
     
-    //MARK: CLLocationManagerDelegate methods
+    //MARK: ONBOARDING DELEGATE
+    func getStartedPressed() {
+        Configurator.shared.onBoardingIsTerminated = true
+        self.enableLocationServices()
+
+    }
+    
+    //MARK: CORE LOCATION MANAGER METHODS
     
     func locationManager(_ manager: CLLocationManager,
                          didChangeAuthorization status: CLAuthorizationStatus) {
@@ -159,6 +190,8 @@ final class LauncherViewController: UIViewController, CLLocationManagerDelegate,
             self.hidePanelInfoView() {
                 self.fpc.move(to: .half, animated: true)
             }
+        } else {
+            self.fpc.move(to: .half, animated: true)
         }
     }
     
@@ -189,6 +222,16 @@ final class LauncherViewController: UIViewController, CLLocationManagerDelegate,
             self.view.layoutIfNeeded()
         }) { _ in
             completion?()
+        }
+    }
+    
+    private func showPanelErrorView() {
+        self.errorInfoDeactivatedTopAnchor.isActive = false
+        self.errorInfoActivatedTopAnchor.isActive = true
+        self.view.setNeedsLayout()
+        
+        UIView.animate(withDuration: 0.3) {
+            self.view.layoutIfNeeded()
         }
     }
     
@@ -237,10 +280,13 @@ final class LauncherViewController: UIViewController, CLLocationManagerDelegate,
         group.enter()
         var countries = [Country]()
         var cities = [City]()
+        
+        var countriesSuccess = true
         Router.shared.countries { response in
             switch response {
             case .failure(let error):
                 print("ERROR \(error.description)")
+                countriesSuccess = false
             case .success(let result):
                 countries = result
             }
@@ -248,9 +294,11 @@ final class LauncherViewController: UIViewController, CLLocationManagerDelegate,
             group.leave()
         }
         
+        var citiesSuccess = true
         Router.shared.cities { response in
             switch response {
             case .failure(let error):
+                citiesSuccess = false
                 print("ERROR \(error.description)")
             case .success(let result):
                 cities = result
@@ -259,11 +307,16 @@ final class LauncherViewController: UIViewController, CLLocationManagerDelegate,
         }
         
         group.notify(queue: .main) {
-            self.citiesViewController.reloadData(with: countries, and: cities)
-            self.setInterface(with: countries, and: cities)
-            
-            if let location = LocationServices.shared.location {
-                self.setInterface(for: location)
+            if countriesSuccess && citiesSuccess {
+                self.citiesViewController.reloadData(with: countries, and: cities)
+                self.setInterface(with: countries, and: cities)
+                self.showLogoButton()
+
+                if let location = LocationServices.shared.location {
+                    self.setInterface(for: location)
+                }
+            } else {
+                self.showPanelErrorView()
             }
         }
     }
@@ -280,15 +333,21 @@ final class LauncherViewController: UIViewController, CLLocationManagerDelegate,
             
             if let city = city, self.mapViewController.contains(location, in: city) {
                 self.mapViewController.setVisibleMapArea(with: city)
-                self.showLogoButton()
-            } else {
-                self.fpc.move(to: .half, animated: true)
+                Router.shared.city(cityCode: city.code) { response in
+                    switch response {
+                    case .failure(let error):
+                        print(error.description)
+                    case .success(let result):
+                        self.showPanelInfoView(with: result)
+                    }
+                }
             }
         }
     }
     
     private func setInterface(with countries: [Country], and cities: [City]) {
         self.citiesViewController.reloadData(with: countries, and: cities)
+       
         fpc = FloatingPanelController()
         fpc.delegate = self
         fpc.surfaceView.backgroundColor = .clear
@@ -313,15 +372,13 @@ final class LauncherViewController: UIViewController, CLLocationManagerDelegate,
     }
     
     func floatingPanel(_ vc: FloatingPanelController, layoutFor newCollection: UITraitCollection) -> FloatingPanelLayout? {
-        fpc.surfaceView.borderWidth = 1.0 / traitCollection.displayScale
-        fpc.surfaceView.borderColor = UIColor.black.withAlphaComponent(0.2)
+        self.fpc.surfaceView.borderWidth = 1.0 / traitCollection.displayScale
+        self.fpc.surfaceView.borderColor = UIColor.black.withAlphaComponent(0.2)
         return PanelCompactLayout()
     }
     
     // MARK: private methods for supporting the Location
     private func enableLocationServices() {
-        self.locationManager.delegate = self
-        
         switch CLLocationManager.authorizationStatus() {
         case .notDetermined:
             // Request when-in-use authorization initially
@@ -343,14 +400,29 @@ final class LauncherViewController: UIViewController, CLLocationManagerDelegate,
         }
     }
     
-    private func disableMyLocationBasedFeatures() {}
+    private func eraseOnBoarding() {
+        UIView.animate(withDuration: 0.5, animations: {
+            self.onBoardingContainerView?.alpha = 0
+        }) { _ in
+            self.onBoardingViewController?.removeFromParent()
+            self.onBoardingContainerView?.removeFromSuperview()
+            self.onBoardingViewController = nil
+            self.onBoardingContainerView = nil
+        }
+     }
+    
+    private func disableMyLocationBasedFeatures() {
+        self.eraseOnBoarding()
+    }
     
     private func enableMyWhenInUseFeatures() {
         self.locationManager.startUpdatingLocation()
+        self.eraseOnBoarding()
     }
     
     private func enableMyAlwaysFeatures() {
         self.locationManager.startUpdatingLocation()
+        self.eraseOnBoarding()
     }
     
     // Escalate only when the authorization is set to when-in-use

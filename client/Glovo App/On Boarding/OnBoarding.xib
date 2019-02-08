@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_0" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="OnBoardingViewController" customModule="Glovo_App" customModuleProvider="target">
+            <connections>
+                <outlet property="buttonBottomConstraint" destination="aPq-0S-EiO" id="irK-MZ-vFa"/>
+                <outlet property="buttonTopConstraint" destination="750-pp-kPr" id="TbV-st-ebr"/>
+                <outlet property="collectionContainerView" destination="8ZC-b0-Bhd" id="GWp-O6-cUv"/>
+                <outlet property="pageControl" destination="6wQ-9z-pQF" id="E7f-0l-vb2"/>
+                <outlet property="view" destination="iN0-l3-epB" id="IqI-E2-Xeb"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8ZC-b0-Bhd" userLabel="Container Collection">
+                    <rect key="frame" x="0.0" y="144" width="320" height="300"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="300" id="j7a-XF-pUA"/>
+                    </constraints>
+                </view>
+                <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="6wQ-9z-pQF">
+                    <rect key="frame" x="140.5" y="452" width="39" height="37"/>
+                    <color key="pageIndicatorTintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="currentPageIndicatorTintColor" red="0.91764705879999997" green="0.76862745099999996" blue="0.32156862749999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </pageControl>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z2g-TV-Cfa">
+                    <rect key="frame" x="0.0" y="568" width="320" height="50"/>
+                    <color key="backgroundColor" red="0.93750125169999998" green="0.78914767500000005" blue="0.2881507277" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="1Ta-E4-nRI"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                    <state key="normal" title="GET STARTED">
+                        <color key="titleColor" red="0.0" green="0.64746421580000002" blue="0.54941970110000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="buttonPressed:" destination="-1" eventType="touchUpInside" id="aDn-ja-jcE"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.0039215686274509803" green="0.63137254901960782" blue="0.54117647058823526" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="z2g-TV-Cfa" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="750-pp-kPr"/>
+                <constraint firstItem="8ZC-b0-Bhd" firstAttribute="centerY" secondItem="vUN-kp-3ea" secondAttribute="centerY" id="DcB-dV-gej"/>
+                <constraint firstItem="z2g-TV-Cfa" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="HIA-YK-EKw"/>
+                <constraint firstItem="6wQ-9z-pQF" firstAttribute="centerX" secondItem="8ZC-b0-Bhd" secondAttribute="centerX" id="YlV-ii-QFw"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="z2g-TV-Cfa" secondAttribute="bottom" id="aPq-0S-EiO"/>
+                <constraint firstItem="6wQ-9z-pQF" firstAttribute="top" secondItem="8ZC-b0-Bhd" secondAttribute="bottom" constant="8" symbolic="YES" id="agm-lr-3Ci"/>
+                <constraint firstItem="8ZC-b0-Bhd" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="h59-Vt-Ptd"/>
+                <constraint firstItem="z2g-TV-Cfa" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="i7t-0W-xq5"/>
+                <constraint firstItem="8ZC-b0-Bhd" firstAttribute="centerX" secondItem="vUN-kp-3ea" secondAttribute="centerX" id="uYi-Db-dvR"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="aPq-0S-EiO"/>
+                </mask>
+            </variation>
+        </view>
+    </objects>
+</document>

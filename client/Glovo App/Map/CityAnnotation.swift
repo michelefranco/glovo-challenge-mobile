@@ -1,8 +1,8 @@
 import UIKit
 import MapKit
 
-final class CityAnnotation: MKPointAnnotation {
-    let image: UIImage? = {
+public final class CityAnnotation: MKPointAnnotation {
+    public let image: UIImage? = {
         // Resize image
         let pinImage = UIImage(named: "logo")
         let size = CGSize(width: 30, height: 30)
@@ -13,5 +13,5 @@ final class CityAnnotation: MKPointAnnotation {
         return resizedImage
     }()
     
-    var city: City?
+    public var city: City?
 }

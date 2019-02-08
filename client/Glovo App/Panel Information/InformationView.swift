@@ -20,6 +20,7 @@ public final class PanelInfoView: UIView {
         self.setup()
     }
     
+    //MARK: VIEW CONTROLLER LIFE CYCLE
     public override func layoutSubviews() {
         super.layoutSubviews()
         
@@ -49,22 +50,10 @@ public final class PanelInfoView: UIView {
         self.timeZoneLabel.font = UIFont.boldSystemFont(ofSize: self.nameLabel.font.pointSize * 0.45)
     }
     
-    private func setup() {
-        self.backgroundColor = .clear
-        self.isOpaque = false
-        self.layer.insertSublayer(backgroundLayer, at: 0)
-        self.addNameLabel()
-        self.addTimeZoneLabel()
-        self.addCurrencyLabel()
-        self.addLanguageCode()
-        self.addBusyLabel()
-        self.addEnabledLabel()
-    }
-    
-    func reload(with city: City) {
+    public func reload(with city: City) {
         var cityName = city.name
         if let flag = Country.flag(countryCode: city.countryCode) {
-            cityName.append(flag)
+            cityName.append(" \(flag)")
         }
         self.nameLabel.text = cityName
         
@@ -88,6 +77,20 @@ public final class PanelInfoView: UIView {
         
         self.timeZoneLabel.text = city.timeZone
         self.layoutIfNeeded()
+    }
+    
+    //MARK: PRIVATE METHODS
+    
+    private func setup() {
+        self.backgroundColor = .clear
+        self.isOpaque = false
+        self.layer.insertSublayer(backgroundLayer, at: 0)
+        self.addNameLabel()
+        self.addTimeZoneLabel()
+        self.addCurrencyLabel()
+        self.addLanguageCode()
+        self.addBusyLabel()
+        self.addEnabledLabel()
     }
     
     private func addNameLabel() {
